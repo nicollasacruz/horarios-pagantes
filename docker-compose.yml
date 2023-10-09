@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      # - "5173:5173"
+    volumes:
+      - ./volumes/horarios-pagantes:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - horarios-pagantes
+
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./volumes/horarios-pagantes:/var/www/html
+    networks:
+      - horarios-pagantes
+
+  db:
+    image: mariadb
+    environment:
+      - TZ=${TZ:-CET}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-horarios}
+      - MYSQL_USER=${MYSQL_USER:-horarios}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-horarios}
+    volumes:
+      - ./.docker/config/mysql:/etc/mysql/conf.d
+      # - ./volumes/mysql/dump:/docker-entrypoint-initdb.d
+      - ./volumes/mysql/data:/var/lib/mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    networks:
+      - horarios-pagantes
+    
+  mailhog:
+    image: blueimp/mailhog
+    ports:
+      - 8025:8025
+      - 1025:1025
+    networks:
+      - horarios-pagantes
+  
+  redis:
+    image: redis:latest
+    networks:
+      - horarios-pagantes
+
+networks:
+  horarios-pagantes:

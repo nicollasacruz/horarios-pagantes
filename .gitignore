@@ -1,0 +1,4 @@
+volumes/horarios-pagantes/composer.lock
+volumes/horarios-pagantes/package-lock.json
+volumes/mysql/data/*
+volumes/mysql/dump/*
