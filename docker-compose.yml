@@ -5,6 +5,7 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    restart: unless-stopped
     ports:
       - "8080:8080"
       # - "80:80"
@@ -14,18 +15,19 @@ services:
     depends_on:
       - php
     networks:
-      - horarios-pagantes
+      - minha_rede
 
   php:
     build:
       context: ./php
       dockerfile: Dockerfile
+    restart: unless-stopped
     ports:
       - "5173:5173"
     volumes:
       - ./volumes/horarios-pagantes:/var/www/html
     networks:
-      - horarios-pagantes
+      - minha_rede
 
   db:
     image: mariadb
@@ -43,7 +45,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - horarios-pagantes
+      - minha_rede
     
   mailhog:
     image: blueimp/mailhog
@@ -51,12 +53,14 @@ services:
       - 8025:8025
       - 1025:1025
     networks:
-      - horarios-pagantes
+      - minha_rede
   
   redis:
     image: redis:latest
+    restart: unless-stopped
     networks:
-      - horarios-pagantes
+      - minha_rede
 
-networks:
-  horarios-pagantes:
+networks :
+  minha_rede:
+    external: true
