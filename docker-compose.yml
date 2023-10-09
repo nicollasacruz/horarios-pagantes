@@ -6,7 +6,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8080:8080"
       # - "5173:5173"
     volumes:
       - ./volumes/horarios-pagantes:/var/www/html
