@@ -1,7 +1,8 @@
 version: '3.8'
 
 services:
-  nginx:
+
+  meu_app:
     build:
       context: ./nginx
       dockerfile: Dockerfile
@@ -12,6 +13,10 @@ services:
       # - "5173:5173"
     volumes:
       - ./volumes/horarios-pagantes:/var/www/html
+    container_name: meu_app
+    environment:
+      - VIRTUAL_HOST=horariospagantes.vip
+      - VIRTUAL_PORT=8080
     depends_on:
       - php
     networks:

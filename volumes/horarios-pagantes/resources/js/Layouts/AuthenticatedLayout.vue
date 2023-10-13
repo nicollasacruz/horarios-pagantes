@@ -136,7 +136,7 @@ const showingNavigationDropdown = ref(false);
                         <ResponsiveNavLink :href="route('fortune-ox')" :active="route().current('fortune-ox')">
                             Fortune OX
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('fortune-tiger')" :active="route().current('fortune-tiger')">
+                        <ResponsiveNavLink :href="route('hallow-win')" :active="route().current('hallow-win')">
                             Mr. Hallow-Win!
                         </ResponsiveNavLink>
                     </div>

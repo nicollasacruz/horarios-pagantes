@@ -91,11 +91,11 @@ const mobile = isMobile();
 </script>
 
 <template>
-  <Head title="Mr.Hallow-Win!" />
+  <Head title="Mr. Hallow-Win!" />
 
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-white leading-tight">Mr.Hallow-Win!</h2>
+      <h2 class="font-semibold text-xl text-white leading-tight">Mr. Hallow-Win!</h2>
     </template>
 
     <div class="bg-gray-800">
