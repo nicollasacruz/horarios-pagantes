@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 Route::get('/games', function () {
     return Inertia::render('Games');
-})->name('games');
+})->middleware(['auth', 'verified'])->name('games');
 
 Route::get('/games/fortune-tiger', function () {
     return Inertia::render('FortuneTiger');
