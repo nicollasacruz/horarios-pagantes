@@ -21,9 +21,15 @@ onMounted(() => {
 defineExpose({ focus: () => input.value.focus() });
 </script>
 
+<style>
+    .bg {
+        background-color: #0a0a0a;
+    }
+</style>
+
 <template>
     <input
-    class="border-gray-700 bg-gray-900 text-gray-300 focus:border-indigo-600 focus:ring-indigo-600 rounded-md shadow-sm"
+    class="border-gray-700 bg text-gray-300 focus:border-indigo-600 focus:ring-indigo-600 rounded-md shadow-sm"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"

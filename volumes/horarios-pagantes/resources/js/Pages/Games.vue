@@ -3,6 +3,9 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import Background from '../../../storage/app/public/img/Background.png';
 import horariosPagantes from '../../../storage/app/public/img/horarios-pagantes.png';
+import FortuneTiger from '../../../storage/app/public/img/tiger.png';
+import FortuneOx from '../../../storage/app/public/img/OX.png';
+import HallowWin from '../../../storage/app/public/img/MrHallowin.png';
 
 const backgroundStyle = `background-image: url(${Background})`;
 
@@ -13,7 +16,7 @@ const backgroundStyle = `background-image: url(${Background})`;
         flex-direction: column;
         justify-content: start;
         align-items: center;
-        height: 100vh;
+        margin: 0 auto;
     }
 
     .box {
@@ -35,7 +38,7 @@ const backgroundStyle = `background-image: url(${Background})`;
     <Head title="Games" />
 
     <AuthenticatedLayout>
-        <div class="py-12 h-full w-full container" :style="backgroundStyle">
+        <div class="py-12 min-h-screen min-w-screen container" :style="backgroundStyle">
             <div class="mb-10 box"><img class="max-w-xs" :src="horariosPagantes" alt=""></div>
             <span class="box bg-yellow-300 p-2 text-3xl font-bold text-center mx-auto">DESCUBRA OS HORÁRIOS PAGANTES DOS PRINCIPAIS JOGOS</span>
             <span class="box p-2 text-2xl text-center text-white mx-auto">Selecione um dos jogos abaixo para descobrir os horários pagantes</span>
