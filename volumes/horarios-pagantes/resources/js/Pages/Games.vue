@@ -6,9 +6,10 @@ import horariosPagantes from '../../../storage/app/public/img/horarios-pagantes.
 import FortuneTiger from '../../../storage/app/public/img/tiger.png';
 import FortuneOx from '../../../storage/app/public/img/OX.png';
 import HallowWin from '../../../storage/app/public/img/MrHallowin.png';
+import PagandoAgora from '../../../storage/app/public/img/pagando-agora.png';
 
 const backgroundStyle = `background-image: url(${Background})`;
-
+let pagando = 'ox';
 </script>
 <style>
 .container {
@@ -31,7 +32,6 @@ const backgroundStyle = `background-image: url(${Background})`;
     transition: transform 0.2s;
     transform: scale(1.05);
 }
-
 </style>
 
 
@@ -46,15 +46,24 @@ const backgroundStyle = `background-image: url(${Background})`;
             <span class="box p-2 text-2xl text-center text-white mx-auto">Selecione um dos jogos abaixo para descobrir os
                 horários pagantes</span>
             <div class="box max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <Link :href="route('fortune-tiger')">
-                    <img class="px-2 jogos" :src="FortuneTiger" alt="Fortune Tiger">
-                </Link>
-                <Link :href="route('fortune-ox')">
-                    <img class="px-2 jogos" :src="FortuneOx" alt="Fortune Tiger">
-                </Link>
-                <Link :href="route('hallow-win')">
-                    <img class="px-2 jogos" :src="HallowWin" alt="Fortune Tiger">
-                </Link>
+                <div class="px-2 jogos relative">
+                    <Link :href="route('fortune-tiger')">
+                    <img class="" :src="FortuneTiger" alt="Fortune Tiger">
+                    </Link>
+                    <img v-if="pagando == 'tiger'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
+                </div>
+                <div class="px-2 jogos relative">
+                    <Link :href="route('fortune-ox')">
+                        <img class="px-2 jogos" :src="FortuneOx" alt="Fortune Tiger">
+                    </Link>
+                    <img v-if="pagando == 'ox'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
+                </div>
+                <div class="px-2 jogos relative">
+                    <Link :href="route('hallow-win')">
+                        <img class="px-2 jogos" :src="HallowWin" alt="Fortune Tiger">
+                    </Link>
+                    <img v-if="pagando == 'hallow'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
+                </div>
             </div>
         </div>
     </AuthenticatedLayout>
