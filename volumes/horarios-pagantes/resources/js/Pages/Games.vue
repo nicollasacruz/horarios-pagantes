@@ -25,12 +25,13 @@ const backgroundStyle = `background-image: url(${Background})`;
     align-items: center;
     border-radius: 15px 0 15px 0;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
 }
 
-.box:hover {
+.jogos:hover {
+    transition: transform 0.2s;
     transform: scale(1.05);
 }
+
 </style>
 
 
@@ -46,13 +47,13 @@ const backgroundStyle = `background-image: url(${Background})`;
                 horários pagantes</span>
             <div class="box max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <Link :href="route('fortune-tiger')">
-                    <img class="px-2" :src="FortuneTiger" alt="Fortune Tiger">
+                    <img class="px-2 jogos" :src="FortuneTiger" alt="Fortune Tiger">
                 </Link>
                 <Link :href="route('fortune-ox')">
-                    <img class="px-2" :src="FortuneOx" alt="Fortune Tiger">
+                    <img class="px-2 jogos" :src="FortuneOx" alt="Fortune Tiger">
                 </Link>
                 <Link :href="route('hallow-win')">
-                    <img class="px-2" :src="HallowWin" alt="Fortune Tiger">
+                    <img class="px-2 jogos" :src="HallowWin" alt="Fortune Tiger">
                 </Link>
             </div>
         </div>
