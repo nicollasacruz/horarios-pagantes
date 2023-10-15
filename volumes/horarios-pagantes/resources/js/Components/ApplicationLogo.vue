@@ -1,5 +1,5 @@
 <script setup>
-import logo from '../../../storage/app/public/img/100x100-logo.png';
+import logo from '../../../storage/app/public/img/100x100-logo.svg';
 </script>
 
 <template>
