@@ -117,8 +117,11 @@ body {
 
 .container {
   /* min-height: 100vh !important; */
-  min-width: 100%;
-  max-height: 835px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 100vw;
+  height: 65vw;
   background-repeat: no-repeat;
   background-size: 100vw auto;
   background-position: start;
@@ -151,7 +154,7 @@ body {
 }
 
 .sub-div1 {
-  height: 37vh;
+  height: 10vw;
   width: 100%;
 }
 
@@ -166,13 +169,15 @@ body {
 }
 
 .sub-div2 {
-  height: 690px;
+  padding: 0px 0 0px 0 ;
+  min-height: 48vh;
   width: 100vw;
+  max-width: 1920px !important;
   background-size: 95vh auto;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -205,7 +210,7 @@ Fortune Tiger: #AB161B
 Fortune OX: #AB161B */
 
 .horarios {
-  width: 13vw;
+  width: 10vw;
   text-align: center;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: bold;
