@@ -129,8 +129,11 @@ body {
 
 .containerMobile {
   /* min-height: 100vh !important; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100wv;
-  max-height: 455px;
+  max-height: 127vw;
   background-repeat: no-repeat;
   background-size: 100vw auto;
   background-position: start;
