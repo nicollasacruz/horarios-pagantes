@@ -8,7 +8,7 @@ import FortuneOx from '../../../storage/app/public/img/OX.png';
 import HallowWin from '../../../storage/app/public/img/MrHallowin.png';
 import PagandoAgora from '../../../storage/app/public/img/pagando-agora.png';
 
-const backgroundStyle = `background-image: url(${Background})`;
+const backgroundStyle = `background-image: url(${Background}); background-size: 100vw auto;`;
 let pagando = 'ox';
 </script>
 <style>

@@ -1,11 +1,15 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import BgFortuneTiger from '../../../storage/app/public/img/bg-fortune-tiger.jpg';
+import BgFortuneTigerMobile from '../../../storage/app/public/img/bg-fortune-tiger-mobile.jpg';
+import BoxFortuneTiger from '../../../storage/app/public/img/box-horarios-tiger.png';
+import BoxFortuneTigerMobile from '../../../storage/app/public/img/box-horarios-tiger-mobile.png';
 import { Head } from '@inertiajs/vue3';
 
 function formatTime(time) {
   const hours = time.getHours().toString().padStart(2, '0');
   const minutes = time.getMinutes().toString().padStart(2, '0');
-  return `⏰ ${hours}:${minutes} 🦇`;
+  return `${hours}:${minutes}`;
 }
 
 function addHours(date, hours) {
@@ -16,6 +20,15 @@ function addHours(date, hours) {
 
 function isMobile() {
   if (screen.width <= 760) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function isIpad() {
+  if (screen.width > 760 && screen.width < 1000) {
     return true;
   }
   else {
@@ -87,38 +100,213 @@ if (!localStorage.getItem('horarios-tiger')) {
 
 const horarios = JSON.parse(localStorage.getItem('horarios-tiger'));
 const mobile = isMobile();
+const ipad = isIpad();
+const fundo = `background-image: url(${BgFortuneTiger})`;
+const fundoMobile = `background-image: url(${BgFortuneTigerMobile})`;
+const box = `background-image: url(${BoxFortuneTiger})`;
+const boxMobile = `background-image: url(${BoxFortuneTigerMobile})`;
 
 </script>
+<style>
+@import url('https://fonts.cdnfonts.com/css/yanone-kaffeesatz');
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* min-height: 100vh !important; */
+  min-width: 100%;
+  max-height: 835px;
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
+  background-position: start;
+}
+
+.containerMobile {
+  /* min-height: 100vh !important; */
+  width: 100wv;
+  max-height: 455px;
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
+  background-position: start;
+}
+
+.containerIpad {
+  /* min-height: 100vh !important; */
+  width: 100wv;
+  height: 970px;
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
+  background-position: start;
+}
+
+.sub-div {
+  margin-top: -20px;
+}
+
+.sub-divIpad {
+  margin-top: 50px;
+}
+
+.sub-div1 {
+  height: 37vh;
+  width: 100%;
+}
+
+.sub-div1Mobile {
+  height: 30vh;
+  width: 100%;
+}
+
+.sub-div1Ipad {
+  height: 54vh;
+  width: 100%;
+}
+
+.sub-div2 {
+  height: 690px;
+  width: 100vw;
+  background-size: 95vh auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-div2Mobile {
+  width: 100vw;
+  height: 230px;
+  margin: 0 auto;
+  background-size: 320px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-div2Ipad {
+  width: 100vw;
+  height: 350px;
+  margin: 0 auto;
+  background-size: auto 350px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mr. Hallo-win: #49227D
+Fortune Tiger: #AB161B
+Fortune OX: #AB161B */
+
+.horarios {
+  width: 13vw;
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #AB161B;
+  border-radius: 5px;
+  box-shadow: 0 3px;
+  /* background: rgb(253,184,39); */
+  background: linear-gradient(180deg, rgba(253, 184, 39, 1) 0%, rgba(253, 226, 103, 1) 100%);
+}
+
+.horariosMobile {
+  width: 16vw;
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: #AB161B;
+  border-radius: 3px;
+  box-shadow: 0 3px;
+  /* background: rgb(253,184,39); */
+  background: linear-gradient(180deg, rgba(253, 184, 39, 1) 0%, rgba(253, 226, 103, 1) 100%);
+}
+
+.horariosIpad {
+  width: 18vw;
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #AB161B;
+  border-radius: 3px;
+  box-shadow: 0 3px;
+  /* background: rgb(253,184,39); */
+  background: linear-gradient(180deg, rgba(253, 184, 39, 1) 0%, rgba(253, 226, 103, 1) 100%);
+}
+
+.iframe {
+  margin: 0px auto;
+  width: 95vw;
+  min-height: 100vh;
+  /* background: rgb(253,184,39); */
+}
+
+.iframeMobile {
+  margin: 0px auto;
+  width: 92vw;
+  min-height: 100vh;
+  /* background: rgb(253,184,39); */
+}
+
+.iframeIpad {
+  margin: 0px auto;
+  width: 92vw;
+  min-height: 100vh;
+  /* background: rgb(253,184,39); */
+}
+</style>
 
 <template>
   <Head title="Fortune Tiger" />
 
   <AuthenticatedLayout>
-    <template #header>
-      <h2 class="font-semibold text-xl text-white leading-tight">Fortune Tiger</h2>
-    </template>
+    <!-- <template #header> -->
+    <!-- <h2 class="font-semibold text-xl text-white leading-tight">Fortune Tiger</h2> -->
+    <!-- </template> -->
 
-    <div class="bg-gray-800">
-      <div class="mx-5 py-6 px-5 bg-fuchsia-900 rounded-lg border-4 border-purple-400">
-        <h3 class="my-3 text-2xl font-semibold text-center text-white">Horários:</h3>
-        <div v-if="!mobile" class="grid grid-cols-4 gap-3">
-          <span class="text-center text-xl text-white font-bold h-10 w-25 bg-fuchsia-900 rounded-lg border-4 border-purple-400"
-            v-for="(horario, index) in horarios" :key="index">
-            {{ horario }}
-          </span>
-        </div>
-
-        <div v-if="mobile" class="grid grid-cols-2 gap-3">
-          <span class="text-center text-xl text-white font-bold h-10 w-25 bg-fuchsia-900 rounded-lg border-4 border-purple-400"
-            v-for="(horario, index) in horarios" :key="index">
+    <div :class="mobile ? 'containerMobile' : ipad ? 'containerIpad' : 'container'"
+      :style="mobile || ipad ? fundoMobile : fundo">
+      <div :class="mobile ? 'sub-div1Mobile' : ipad ? 'sub-div1Ipad' : 'sub-div1'"></div>
+      <div v-if="!mobile && !ipad" class="sub-div2" :style="box">
+        <div class="grid grid-cols-4 gap-3  z-50 max-w-4xl m-auto">
+          <span class="horarios" v-for="(horario, index) in horarios" :key="index">
             {{ horario }}
           </span>
         </div>
       </div>
 
-      <iframe v-if="mobile" class="h-screen m-auto" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty"
+      <div v-if="ipad" class="sub-div2Ipad" :style="boxMobile">
+        <div class="sub-divIpad grid grid-cols-4 gap-3 z-50 max-w-4xl m-auto">
+          <span class="horariosIpad" v-for="(horario, index) in horarios" :key="index">
+            {{ horario }}
+          </span>
+        </div>
+      </div>
+
+      <div v-if="mobile" class="sub-div2Mobile" :style="boxMobile">
+        <div class="sub-div grid grid-cols-4 gap-1 ">
+          <span class="horariosMobile" v-for="(horario, index) in horarios" :key="index">
+            {{ horario }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <div class="bg-black">
+      <iframe v-if="!mobile && !ipad" class="iframe" src="https://realsbet.com/casino/game/1970214?provider=MrSlotty"
         frameborder="0"></iframe>
-      <iframe v-if="!mobile" class="px-5 py-5 h-screen w-full" src="https://realsbet.com/casino/game/1970214?provider=MrSlotty"
+      <iframe v-if="ipad" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty"
+        frameborder="0"></iframe>
+      <iframe v-if="mobile" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty"
         frameborder="0"></iframe>
     </div>
   </AuthenticatedLayout>
