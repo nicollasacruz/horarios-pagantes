@@ -149,7 +149,7 @@ Fortune OX: #AB161B */
   border-radius: 5px;
   box-shadow: 0 3px;
   /* background: rgb(253,184,39); */
-  background: linear-gradient(180deg, rgba(253, 184, 39, 1) 0%, rgba(253, 226, 103, 1) 100%);
+  background: linear-gradient(360deg, #8ff1dc 0%, #24f3b2 100%);
 }
 
 .horariosMobile {

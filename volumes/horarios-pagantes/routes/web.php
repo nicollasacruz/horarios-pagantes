@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FortuneOxController;
 use App\Http\Controllers\FortuneTigerController;
+use App\Http\Controllers\MrHallowWinController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -41,9 +42,8 @@ Route::get('/games/fortune-tiger', [FortuneTigerController::class, 'index'])
 Route::get('/games/fortune-ox', [FortuneOxController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('fortune-ox');
 
-Route::get('/games/hallow-win', function () {
-    return Inertia::render('MrHallowWin');
-})->middleware(['auth', 'verified'])->name('hallow-win');
+Route::get('/games/hallow-win', [MrHallowWinController::class, 'index'])
+->middleware(['auth', 'verified'])->name('hallow-win');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

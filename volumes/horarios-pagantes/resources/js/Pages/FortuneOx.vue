@@ -24,7 +24,7 @@ function isIpad() {
   }
 }
 
-defineProps({ horarios: Array })
+defineProps({ horarios: Array, porcentagem: Number })
 
 const mobile = isMobile();
 const ipad = isIpad();
@@ -106,6 +106,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
@@ -211,6 +212,10 @@ Fortune OX: #AB161B */
       :style="mobile || ipad ? fundoMobile : fundo">
       <div :class="mobile ? 'sub-div1Mobile' : ipad ? 'sub-div1Ipad' : 'sub-div1'"></div>
       <div v-if="!mobile && !ipad" class="sub-div2" :style="box">
+        <div class="w-[40%] h-6 bg-gray-200 rounded-full dark:bg-gray-700 absolute border border-2 border-black">
+          <div class="h-6 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold"
+            style="width: {{porcentagem}}%">{{ porcentagem }}% de acertividade</div>
+        </div>
         <div class="grid grid-cols-4 gap-3  z-50 max-w-4xl m-auto">
           <span class="horarios" v-for="(horario, index) in horarios" :key="index">
             {{ horario }}
@@ -236,12 +241,12 @@ Fortune OX: #AB161B */
 
     </div>
     <div class="bg-black">
-      <iframe v-if="!mobile && !ipad" class="iframe" src="https://realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110"
-        frameborder="0"></iframe>
-      <iframe v-if="ipad" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110"
-      frameborder="0"></iframe>
-      <iframe v-if="mobile" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110"
-        frameborder="0"></iframe>
+      <iframe v-if="!mobile && !ipad" class="iframe"
+        src="https://realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+      <iframe v-if="ipad" class="iframeMobile"
+        src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+      <iframe v-if="mobile" class="iframeMobile"
+        src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
     </div>
   </AuthenticatedLayout>
 </template>

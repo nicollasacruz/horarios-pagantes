@@ -21,7 +21,8 @@ class FortuneTigerController extends Controller
 			]);
 		}
 		return Inertia::render('FortuneTiger', [
-			'horarios' => \json_decode($horarios->horarios)
+			'horarios' => \json_decode($horarios->horarios),
+			'porcentagem' => $horarios->porcentagem,
 		]);
 	}
 

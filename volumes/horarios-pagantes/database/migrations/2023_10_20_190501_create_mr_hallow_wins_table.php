@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mr_hallow_wins', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+			$table->id();
+			$table->decimal('porcentagem');
+			$table->date('data');
+			$table->integer('hora');
+			$table->json('horarios');
+			$table->timestamps();
         });
     }
 

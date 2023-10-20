@@ -21,7 +21,8 @@ class FortuneOxController extends Controller
 			]);
 		}
 		return Inertia::render('FortuneOx', [
-			'horarios' => \json_decode($horarios->horarios)
+			'horarios' => \json_decode($horarios->horarios),
+			'porcentagem' => $horarios->porcentagem,
 		]);
 	}
 
