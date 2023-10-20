@@ -6,18 +6,6 @@ import BoxFortuneTiger from '../../../storage/app/public/img/box-horarios-tiger.
 import BoxFortuneTigerMobile from '../../../storage/app/public/img/box-horarios-tiger-mobile.png';
 import { Head } from '@inertiajs/vue3';
 
-function formatTime(time) {
-  const hours = time.getHours().toString().padStart(2, '0');
-  const minutes = time.getMinutes().toString().padStart(2, '0');
-  return `${hours}:${minutes}`;
-}
-
-function addHours(date, hours) {
-  date.setHours(date.getHours() + hours);
-
-  return date;
-}
-
 function isMobile() {
   if (screen.width <= 760) {
     return true;
@@ -36,71 +24,11 @@ function isIpad() {
   }
 }
 
-if (!localStorage.getItem('horarios-tiger')) {
-  const now = new Date();
-  const nextHour = new Date(now);
-  nextHour.setHours(nextHour.getHours() + 1);
-  nextHour.setMinutes(0);
-  nextHour.setSeconds(0);
+defineProps({ horarios: Array })
 
-  const horarios = [];
-
-  while (horarios.length < 20) {
-    const randomMinutes = Math.floor(Math.random() * 60);
-    let hour = new Date();
-    let randomTime = new Date();
-    randomTime.setMinutes(randomMinutes);
-    randomTime.setSeconds(0);
-
-    if (horarios.length > 10) {
-      randomTime.setHours(hour.getHours() + 1);
-    }
-    if (!horarios.includes(formatTime(randomTime))) {
-      horarios.push(formatTime(randomTime));
-    }
-  }
-
-  horarios.sort(); // Ordenar os horários em ordem crescente
-
-  localStorage.setItem('horarios-tiger', JSON.stringify(horarios));
-} else {
-  // Se existir, verifique se a hora atual é maior que a hora do último valor
-  const horarios = JSON.parse(localStorage.getItem('horarios-tiger'));
-  const lastTime = new Date(horarios[horarios.length - 1]);
-  const now = new Date();
-
-  if (now.getHours() > lastTime.getHours()) {
-    // Se a hora atual for maior, gere novos valores seguindo a mesma lógica
-    const nextHour = new Date(now);
-    nextHour.setHours(nextHour.getHours() + 1);
-    nextHour.setMinutes(0);
-    nextHour.setSeconds(0);
-
-    while (horarios.length < 20) {
-      const randomMinutes = Math.floor(Math.random() * 60);
-      let hour = new Date();
-      let randomTime = new Date();
-
-      if (horarios.length > 10) {
-        randomTime.setHours(hour.getHours() + 1);
-      }
-      randomTime.setMinutes(randomMinutes);
-      randomTime.setSeconds(0);
-
-      if (randomTime <= nextHour && !horarios.includes(formatTime(randomTime))) {
-        horarios.push(formatTime(randomTime));
-      }
-    }
-
-    horarios.sort(); // Ordenar os horários em ordem crescente
-
-    localStorage.setItem('horarios-tiger', JSON.stringify(horarios));
-  }
-}
-
-const horarios = JSON.parse(localStorage.getItem('horarios-tiger'));
 const mobile = isMobile();
 const ipad = isIpad();
+
 const fundo = `background-image: url(${BgFortuneTiger})`;
 const fundoMobile = `background-image: url(${BgFortuneTigerMobile})`;
 const box = `background-image: url(${BoxFortuneTiger})`;
@@ -158,7 +86,7 @@ body {
 
 .sub-div1 {
   height: 10vw;
-  width: 100%;
+  width: 100vw;
 }
 
 .sub-div1Mobile {
@@ -172,7 +100,6 @@ body {
 }
 
 .sub-div2 {
-  padding: 0px 0 0px 0 ;
   min-height: 48vh;
   width: 100vw;
   max-width: 1920px !important;
@@ -310,11 +237,11 @@ Fortune OX: #AB161B */
 
     </div>
     <div class="bg-black">
-      <iframe v-if="!mobile && !ipad" class="iframe" src="https://realsbet.com/casino/game/1970214?provider=MrSlotty"
+      <iframe v-if="!mobile && !ipad" class="iframe" src="https://realsbet.com/casino/game/1970214?provider=MrSlotty&btag=CX-48560_421110"
         frameborder="0"></iframe>
-      <iframe v-if="ipad" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty"
+      <iframe v-if="ipad" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty&btag=CX-48560_421110"
         frameborder="0"></iframe>
-      <iframe v-if="mobile" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty"
+      <iframe v-if="mobile" class="iframeMobile" src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty&btag=CX-48560_421110"
         frameborder="0"></iframe>
     </div>
   </AuthenticatedLayout>

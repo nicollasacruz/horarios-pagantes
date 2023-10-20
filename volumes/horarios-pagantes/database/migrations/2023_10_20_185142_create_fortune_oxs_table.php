@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('contact');
+        Schema::create('fortune_oxs', function (Blueprint $table) {
+			$table->id();
+			$table->decimal('porcentagem');
+			$table->date('data');
+			$table->integer('hora');
+			$table->json('horarios');
+			$table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('contact');
-        });
+        Schema::dropIfExists('fortune_oxs');
     }
 };

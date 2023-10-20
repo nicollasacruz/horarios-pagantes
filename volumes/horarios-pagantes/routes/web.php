@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FortuneOxController;
+use App\Http\Controllers\FortuneTigerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,13 +35,11 @@ Route::get('/games', function () {
     return Inertia::render('Games');
 })->middleware(['auth', 'verified'])->name('games');
 
-Route::get('/games/fortune-tiger', function () {
-    return Inertia::render('FortuneTiger');
-})->middleware(['auth', 'verified'])->name('fortune-tiger');
+Route::get('/games/fortune-tiger', [FortuneTigerController::class, 'index'])
+->middleware(['auth', 'verified'])->name('fortune-tiger');
 
-Route::get('/games/fortune-ox', function () {
-    return Inertia::render('FortuneOx');
-})->middleware(['auth', 'verified'])->name('fortune-ox');
+Route::get('/games/fortune-ox', [FortuneOxController::class, 'index'])
+->middleware(['auth', 'verified'])->name('fortune-ox');
 
 Route::get('/games/hallow-win', function () {
     return Inertia::render('MrHallowWin');
