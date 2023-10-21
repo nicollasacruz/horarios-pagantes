@@ -29,8 +29,10 @@ class FortuneTigerController extends Controller
 	public function generateHorarios($horarios): array {
 		$horarios = $horarios ?? [];
 		while(count($horarios) < 20) { 
-			if (!\in_array($horario = (new DateTime('now', new DateTimeZone('America/Sao_Paulo')))->format('H') . ":" . \rand(0, 59), $horarios)) {
-				$horarios[] = date('H:i',strtotime($horario));
+			$horario = (new DateTime('now', new DateTimeZone('America/Sao_Paulo')))->format('H') . ":" . \rand(0, 59);
+			$horario = date('H:i',strtotime($horario));
+			if (!\in_array($horario, $horarios)) {
+				$horarios[] = $horario;
 			}
 		}
 		\sort($horarios);
