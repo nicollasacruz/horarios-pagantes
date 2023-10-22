@@ -199,14 +199,14 @@ Fortune OX: #AB161B */
 .iframeMobile {
   margin: 0px auto;
   width: 92vw;
-  min-height: 100vh;
+  min-height: 90vh;
   /* background: rgb(253,184,39); */
 }
 
 .iframeIpad {
   margin: 0px auto;
   width: 92vw;
-  min-height: 100vh;
+  min-height: 90vh;
   /* background: rgb(253,184,39); */
 }
 </style>
