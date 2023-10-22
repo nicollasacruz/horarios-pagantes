@@ -26,10 +26,34 @@ function isIpad() {
 	}
 }
 
+function randomIntFromInterval(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function shuffleArray(arr) {
+        // Loop em todos os elementos
+    for (let i = arr.length - 1; i > 0; i--) {
+            // Escolhendo elemento aleatório
+        const j = Math.floor(Math.random() * (i + 1));
+        // Reposicionando elemento
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    // Retornando array com aleatoriedade
+    return arr;
+}
+
+function mostrarHorario() {
+	mostrarHorarioState = true;
+}
+
 const backgroundStyle = `background-image: url(${Background}); background-size: 100vw auto;`;
-let pagando = 'ox';
+let lista = ['ox', 'tiger', 'hallow'];
+lista = shuffleArray(lista);
+let pagando = lista[0];
 const mobile = isMobile();
 const ipad = isIpad();
+
+var mostrarHorarioState = false;
 
 </script>
 
