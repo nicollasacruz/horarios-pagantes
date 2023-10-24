@@ -218,9 +218,13 @@ Fortune OX: #AB161B */
     <div :class="mobile ? 'containerMobile' : ipad ? 'containerIpad' : 'container'"
       :style="mobile || ipad ? fundoMobile : fundo">
       <div :class="mobile ? 'sub-div1Mobile' : ipad ? 'sub-div1Ipad' : 'sub-div1'"></div>
-      
+
       <!--                PC                 -->
       <div v-if="pc" class="sub-div2 flex flex-col" :style="box">
+        <div v-if="!mostrarHorarioState && !carregando"
+          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"><button
+            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
+        </div>
         <div v-if="carregando" class="text-center my-auto">
           <div role="status" class="flex flex-col justify-center justify-items-center items-center">
             <svg aria-hidden="true"
@@ -237,25 +241,24 @@ Fortune OX: #AB161B */
             <span class="font-bold text-3xl text-white">Conectando IA ao servidor da plataforma...</span>
           </div>
         </div>
-
-        <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-2 max-w-4xl m-auto" style="margin-top: 3%;">
-          <span class="horarios" v-for="(horario, index) in horarios" :key="index">
-            {{ horario }}
-          </span>
-        </div>
-
-        <!-- <div v-if="mostrarHorarioState"
-          class="w-[66%] h-3 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
-          <div class="h-3 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold text-xs"
-            style="width: {{porcentagem}}%">{{ porcentagem }}% de assertividade...</div>
-        </div> -->
-        <div v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"><button
-            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
+        <div v-if="mostrarHorarioState" style="margin-top: 3%;">
+          <div class="grid grid-cols-4 gap-2 max-w-4xl m-auto">
+            <span class="horarios" v-for="(horario, index) in horarios" :key="index">
+              {{ horario }}
+            </span>
+          </div>
+          <div class="w-[100%] mt-2 h-6 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
+            <div class="h-6 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold "
+              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
+          </div>
         </div>
       </div>
       <!--               IPAD                -->
       <div v-if="ipad" class="sub-div2Ipad flex flex-col" :style="boxMobile">
+        <div v-if="!mostrarHorarioState && !carregando"
+          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botao text-3xl"><button
+            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
+        </div>
         <div v-if="carregando" class="text-center my-auto">
           <div role="status" class="flex flex-col justify-center justify-items-center items-center">
             <svg aria-hidden="true"
@@ -272,21 +275,24 @@ Fortune OX: #AB161B */
             <span class="font-bold text-xl text-white">Conectando IA ao servidor da plataforma...</span>
           </div>
         </div>
-
-        <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-3 z-50 max-w-4xl m-auto" style="margin-top: 13%;">
-          <span class="horariosIpad" v-for="(horario, index) in horarios" :key="index">
-            {{ horario }}
-          </span>
-        </div>
-
-
-        <div v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botao text-3xl"><button
-            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
+        <div v-if="mostrarHorarioState" style="margin-top: -8%;">
+          <div class="grid grid-cols-4 gap-3 z-50 max-w-4xl m-auto">
+            <span class="horariosIpad" v-for="(horario, index) in horarios" :key="index">
+              {{ horario }}
+            </span>
+          </div>
+          <div class="w-[100%] mt-2 h-5 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
+            <div class="h-5 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold"
+              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
+          </div>
         </div>
       </div>
       <!--              MOBILE               -->
       <div v-if="mobile" class="sub-div2Mobile flex flex-col" :style="boxMobile">
+        <div v-if="!mostrarHorarioState && !carregando"
+          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botao text-xl botao"><button
+            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
+        </div>
         <div v-if="carregando" class="text-center my-auto">
           <div role="status" class="flex flex-col justify-center justify-items-center items-center">
             <svg aria-hidden="true"
@@ -304,23 +310,17 @@ Fortune OX: #AB161B */
           </div>
         </div>
 
-
-        <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-1" style="margin-top: -6%;">
-          <span class="horariosMobile" v-for="(horario, index) in horarios" :key="index">
-            {{ horario }}
-          </span>
-        </div>
-
-
-        <!-- <div v-if="mostrarHorarioState"
-          class="w-[66%] h-3 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
-          <div class="h-3 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold text-xs"
-            style="width: {{porcentagem}}%">{{ porcentagem }}% de assertividade...</div>
-        </div> -->
-
-        <div v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botao text-xl botao"><button
-            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
+        <div>
+          <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-1" style="margin-top: -7%;">
+            <span class="horariosMobile" v-for="(horario, index) in horarios" :key="index">
+              {{ horario }}
+            </span>
+          </div>
+          <div v-if="mostrarHorarioState"
+            class="w-[100%] mt-2 h-4 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
+            <div class="h-4 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold text-xs"
+              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
+          </div>
         </div>
       </div>
 
