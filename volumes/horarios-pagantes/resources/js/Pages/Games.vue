@@ -42,10 +42,6 @@ function shuffleArray(arr) {
     return arr;
 }
 
-function mostrarHorario() {
-	mostrarHorarioState = true;
-}
-
 const backgroundStyle = `background-image: url(${Background}); background-size: 100vw auto;`;
 let lista = ['ox', 'tiger', 'hallow'];
 lista = shuffleArray(lista);

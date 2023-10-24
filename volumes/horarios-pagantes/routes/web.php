@@ -4,9 +4,11 @@ use App\Http\Controllers\FortuneOxController;
 use App\Http\Controllers\FortuneTigerController;
 use App\Http\Controllers\MrHallowWinController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,22 @@ Route::get('/', function () {
 Route::get('/games', function () {
     return Inertia::render('Games');
 })->middleware(['auth', 'verified'])->name('games');
+
+Route::get('/admin/users', function () {
+    if (Auth::user()->role === 'admin') {
+        $users = User::all(['name', 'contact', 'email']);
+        return Inertia::render('UsersList', ['users' => $users]);
+    }
+    return redirect('games');
+})->middleware(['auth', 'verified'])->name('users-list');
+
+// Route::get('/admin/users/export', function () {
+//     if (Auth::user()->role === 'admin') {
+//         $users = User::all(['name', 'contact', 'email']);
+//         return Excel::download(new UsersExport($users), 'users.xlsx');
+//     }
+//     return redirect('games');
+// })->middleware(['auth', 'verified'])->name('users-export');
 
 Route::get('/games/fortune-tiger', [FortuneTigerController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('fortune-tiger');

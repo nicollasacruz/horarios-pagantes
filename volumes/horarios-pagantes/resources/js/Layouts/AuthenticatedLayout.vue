@@ -48,6 +48,11 @@ const showingNavigationDropdown = ref(false);
                                     Mr. Hallow-Win!
                                 </NavLink>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink :href="route('users-list')" :active="route().current('users-list')">
+                                    Admin
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -138,6 +143,9 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('hallow-win')" :active="route().current('hallow-win')">
                             Mr. Hallow-Win!
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink  :href="route('users-list')" :active="route().current('users-list')">
+                            Admin
                         </ResponsiveNavLink>
                     </div>
 
