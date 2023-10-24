@@ -239,19 +239,18 @@ Fortune OX: #AB161B */
           </div>
         </div>
 
-
-        <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-3 max-w-4xl m-auto">
-          <span class="horarios" v-for="(horario, index) in horarios" :key="index">
-            {{ horario }}
-          </span>
+        <div v-if="mostrarHorarioState">
+          <div class="grid grid-cols-4 gap-3 max-w-4xl m-auto">
+            <span class="horarios" v-for="(horario, index) in horarios" :key="index">
+              {{ horario }}
+            </span>
+          </div>
+          <div class="w-[100%] mt-2 h-6 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
+            <div class="h-6 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold "
+              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
+          </div>
         </div>
 
-
-        <!-- <div v-if="mostrarHorarioState"
-          class="w-[66%] h-3 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
-          <div class="h-3 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold text-xs"
-            style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
-        </div> -->
         <div v-if="!mostrarHorarioState && !carregando"
           class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"><button
             type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
