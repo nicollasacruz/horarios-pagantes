@@ -239,7 +239,7 @@ Fortune OX: #AB161B */
           </div>
         </div>
 
-        <div v-if="mostrarHorarioState">
+        <div v-if="mostrarHorarioState" style="margin-top: 3%;">
           <div class="grid grid-cols-4 gap-3 max-w-4xl m-auto">
             <span class="horarios" v-for="(horario, index) in horarios" :key="index">
               {{ horario }}
