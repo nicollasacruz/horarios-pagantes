@@ -7,15 +7,13 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "8080:8080"
-      # - "80:80"
-      # - "5173:5173"
     volumes:
       - ./volumes/horarios-pagantes:/var/www/html
     container_name: meu_app
     environment:
       - VIRTUAL_HOST=horariospagantes.vip
+      - LETSENCRYPT_HOST=horariospagantes.vip
+      - LETSENCRYPT_EMAIL=nicollasacruz@gmail.com
       - VIRTUAL_PORT=8080
     depends_on:
       - php
@@ -44,7 +42,6 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-horarios}
     volumes:
       - ./.docker/config/mysql:/etc/mysql/conf.d
-      # - ./volumes/mysql/dump:/docker-entrypoint-initdb.d
       - ./volumes/mysql/data:/var/lib/mysql
     restart: unless-stopped
     ports:
