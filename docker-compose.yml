@@ -19,6 +19,7 @@ services:
       - php
     networks:
       - minha_rede
+      - reverse-proxy
 
   php:
     build:
@@ -66,3 +67,6 @@ services:
 networks :
   minha_rede:
     external: true
+  reverse-proxy:
+    external: true
+    name: reverse-proxy
