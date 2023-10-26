@@ -26,6 +26,10 @@ function isIpad() {
   return false;
 }
 
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
+
 defineProps({ horarios: Array, porcentagem: Number });
 
 const mobile = isMobile();
@@ -200,6 +204,7 @@ Fortune OX: #AB161B */
   margin: 0px auto;
   width: 92vw;
   min-height: 90vh;
+  max-height: 100vh;
   /* background: rgb(253,184,39); */
 }
 
@@ -207,6 +212,7 @@ Fortune OX: #AB161B */
   margin: 0px auto;
   width: 92vw;
   min-height: 90vh;
+  max-height: 100vh;
   /* background: rgb(253,184,39); */
 }
 </style>
@@ -325,13 +331,20 @@ Fortune OX: #AB161B */
       </div>
 
     </div>
-    <div class="bg-black">
+    <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad && mostrarHorarioState" class="iframe"
         src="https://realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
       <iframe v-if="ipad && mostrarHorarioState" class="iframeMobile"
         src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"
         src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+      <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
+          <path fill-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v5.69a.75.75 0 001.5 0v-5.69l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
     </div>
   </AuthenticatedLayout>
 </template>
