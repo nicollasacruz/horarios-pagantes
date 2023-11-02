@@ -59,6 +59,7 @@ function mostrarHorario() {
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 .container {
@@ -335,7 +336,7 @@ Fortune OX: #AB161B */
 
     <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad" class="iframe"
-        src="https://realsbet.com/casino/game/1970214?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/pgsoft/126" frameborder="0"></iframe>
       <iframe v-if="ipad" class="iframeMobile"
         src="https://m.realsbet.com/casino/game/1970214?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"

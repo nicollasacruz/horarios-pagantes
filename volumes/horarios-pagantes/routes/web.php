@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,13 +47,8 @@ Route::get('/admin/users', function () {
     return redirect('games');
 })->middleware(['auth', 'verified'])->name('users-list');
 
-// Route::get('/admin/users/export', function () {
-//     if (Auth::user()->role === 'admin') {
-//         $users = User::all(['name', 'contact', 'email']);
-//         return Excel::download(new UsersExport($users), 'users.xlsx');
-//     }
-//     return redirect('games');
-// })->middleware(['auth', 'verified'])->name('users-export');
+Route::get('/admin/users/export', [AdminController::class, 'exportUsers'])
+->middleware(['auth', 'verified'])->name('users-export');
 
 Route::get('/games/fortune-tiger', [FortuneTigerController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('fortune-tiger');

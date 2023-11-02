@@ -27,19 +27,19 @@ function isIpad() {
 }
 
 function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
+	return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 function shuffleArray(arr) {
-        // Loop em todos os elementos
-    for (let i = arr.length - 1; i > 0; i--) {
-            // Escolhendo elemento aleatório
-        const j = Math.floor(Math.random() * (i + 1));
-        // Reposicionando elemento
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    // Retornando array com aleatoriedade
-    return arr;
+	// Loop em todos os elementos
+	for (let i = arr.length - 1; i > 0; i--) {
+		// Escolhendo elemento aleatório
+		const j = Math.floor(Math.random() * (i + 1));
+		// Reposicionando elemento
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	// Retornando array com aleatoriedade
+	return arr;
 }
 
 const backgroundStyle = `background-image: url(${Background}); background-size: 100vw auto;`;
@@ -129,7 +129,7 @@ var mostrarHorarioState = false;
 			<div v-if="mobile || ipad" class="boxMobile max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="px-2 jogos relative">
 					<Link :href="route('fortune-tiger')">
-					<img class="" :src="FortuneTiger" alt="Fortune Tiger">
+						<img class="" :src="FortuneTiger" alt="Fortune Tiger">
 					</Link>
 					<img v-if="pagando == 'tiger'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>

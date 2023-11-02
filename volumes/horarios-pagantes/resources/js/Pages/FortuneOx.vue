@@ -59,6 +59,7 @@ function mostrarHorario() {
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 .container {
@@ -333,11 +334,11 @@ Fortune OX: #AB161B */
     </div>
     <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad && mostrarHorarioState" class="iframe"
-        src="https://realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
       <iframe v-if="ipad && mostrarHorarioState" class="iframeMobile"
-        src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"
-        src="https://m.realsbet.com/casino/game/1970229?provider=MrSlotty&btag=CX-48560_421110" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
           <path fill-rule="evenodd"
