@@ -15,9 +15,12 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    });
+    if (isPhoneNumberValid(form.contact)){
+        form.post(route('register'), {
+            onFinish: () => form.reset('password', 'password_confirmation'),
+        });
+    }
+    console.log('error');
 };
 
 const isPhoneNumberValid = (phoneNumber) => {
@@ -55,7 +58,7 @@ const isPhoneNumberValid = (phoneNumber) => {
                 <InputLabel for="contact" value="Telefone" />
 
                 <TextInput id="contact" type="text" class="mt-1 block w-full" v-model="form.contact" required
-                    autocomplete="contact" />
+                    autocomplete="contact" v-mask="'(##)#####-####'" />
 
                 <InputError class="mt-2" :message="form.errors.contact" />
 
