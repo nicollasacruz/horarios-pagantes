@@ -89,7 +89,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 100vw;
-  height: 127vw;
+  height: 178vw;
   background-repeat: no-repeat;
   background-size: 100vw auto;
   background-position: start;
