@@ -221,7 +221,7 @@ Fortune OX: #AB161B */
 </style>
 
 <template>
-  <Head title="Mr. Hallow-Win" />
+  <Head title="Ninja Crash" />
 
   <AuthenticatedLayout>
     <div :class="mobile ? 'containerMobile' : ipad ? 'containerIpad' : 'container'"
