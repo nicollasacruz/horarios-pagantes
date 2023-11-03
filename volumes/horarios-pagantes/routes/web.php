@@ -10,6 +10,7 @@ use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NinjaCrashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +23,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
 
 Route::get('/', function () {
     return redirect('games');
@@ -58,6 +51,9 @@ Route::get('/games/fortune-ox', [FortuneOxController::class, 'index'])
 
 Route::get('/games/hallow-win', [MrHallowWinController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('hallow-win');
+
+Route::get('/games/ninja-crash', [NinjaCrashController::class, 'index'])
+->middleware(['auth', 'verified'])->name('ninja-crash');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

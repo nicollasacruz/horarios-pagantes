@@ -43,7 +43,7 @@ function shuffleArray(arr) {
 }
 
 const backgroundStyle = `background-image: url(${Background}); background-size: 100vw auto;`;
-let lista = ['ox', 'tiger', 'hallow'];
+let lista = ['ox', 'tiger', 'hallow', 'ninja'];
 lista = shuffleArray(lista);
 let pagando = lista[0];
 const mobile = isMobile();
@@ -104,7 +104,9 @@ var mostrarHorarioState = false;
 
 			<span class="flex justify-center align-items-center p-2 text-xl text-center text-white mx-auto">Selecione um dos
 				jogos abaixo para descobrir os
-				horários pagantes</span>
+				horários pagantes
+			</span>
+			<!--            PC            -->
 			<div v-if="!mobile && !ipad" class="box max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="px-2 jogos relative">
 					<Link :href="route('fortune-tiger')">
@@ -124,8 +126,14 @@ var mostrarHorarioState = false;
 					</Link>
 					<img v-if="pagando == 'hallow'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
+				<!-- <div class="px-2 jogos relative">
+					<Link :href="route('ninja-crash')">
+					<img class="px-2 jogos" :src="HallowWin" alt="Ninja Crash">
+					</Link>
+					<img v-if="pagando == 'ninja'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Ninja Crash">
+				</div> -->
 			</div>
-
+			<!--            MOBILE            -->
 			<div v-if="mobile || ipad" class="boxMobile max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="px-2 jogos relative">
 					<Link :href="route('fortune-tiger')">
@@ -145,6 +153,12 @@ var mostrarHorarioState = false;
 					</Link>
 					<img v-if="pagando == 'hallow'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
+				<!-- <div class="px-2 jogos relative">
+					<Link :href="route('ninja-crash')">
+					<img class="px-2 jogos" :src="HallowWin" alt="Ninja Crash">
+					</Link>
+					<img v-if="pagando == 'ninja'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Ninja Crash">
+				</div> -->
 			</div>
 		</div>
 	</AuthenticatedLayout>

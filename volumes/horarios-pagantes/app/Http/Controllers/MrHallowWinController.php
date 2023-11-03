@@ -19,13 +19,13 @@ class MrHallowWinController extends Controller
 			$horarios = MrHallowWin::create([
 				'data' => new DateTime('now', new DateTimeZone('America/Sao_Paulo')),
 				'hora' => (int)(new DateTime('now', new DateTimeZone('America/Sao_Paulo')))->format('H'),
-				'porcentagem' => $porcentagem,
+				'porcentagem' => (float)$porcentagem,
 				'horarios' => $horariosJson,
 			]);
 			MrHallowWin::create([
 				'data' => new DateTime('now', new DateTimeZone('America/Sao_Paulo')),
 				'hora' => (int)(\date_add(new DateTime('now', new DateTimeZone('America/Sao_Paulo')), DateInterval::createFromDateString('1 hour')))->format('H'),
-				'porcentagem' => $porcentagem,
+				'porcentagem' => (float)$porcentagem,
 				'horarios' => $horariosJson,
 			]);
 		}

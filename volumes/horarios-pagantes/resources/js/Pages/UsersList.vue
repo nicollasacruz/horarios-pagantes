@@ -2,33 +2,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import Background from '../../../storage/app/public/img/Background.png';
-import horariosPagantes from '../../../storage/app/public/img/horarios-pagantes.png';
-
-function isMobile() {
-	if (screen.width <= 760) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-function isIpad() {
-	if (screen.width > 760 && screen.width < 1000) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
 defineProps({ users: Array });
 const backgroundStyle = `background-image: url(${Background}); background-size: 100vw auto;`;
 
 </script>
-
-<style></style>
-
 
 <template>
 	<Head title="Usuários" />
@@ -67,11 +45,6 @@ const backgroundStyle = `background-image: url(${Background}); background-size: 
 					</tbody>
 				</table>
 			</div>
-
-
-
 		</div>
-
-
 	</AuthenticatedLayout>
 </template>
