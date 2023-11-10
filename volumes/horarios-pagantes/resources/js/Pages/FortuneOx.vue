@@ -333,9 +333,9 @@ Fortune OX: #AB161B */
 
     </div>
     <div class="bg-black relative">
-      <iframe v-if="!mobile && !ipad && mostrarHorarioState" class="iframe"
+      <iframe v-if="!mobile && !ipad" class="iframe"
         src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
-      <iframe v-if="ipad && mostrarHorarioState" class="iframeMobile"
+      <iframe v-if="ipad" class="iframeMobile"
         src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"
         src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
