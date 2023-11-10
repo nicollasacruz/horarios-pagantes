@@ -11,6 +11,10 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NinjaCrashController;
+use App\Models\FortuneOx;
+use App\Models\FortuneTiger;
+use App\Models\MrHallowWin;
+use App\Models\NinjaCrash;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +33,25 @@ Route::get('/', function () {
 });
 
 Route::get('/games', function () {
-    return Inertia::render('Games');
+    $horaAtual = (new DateTime('now', new DateTimeZone('America/Sao_Paulo')))->format('H');
+
+    $ninja = NinjaCrash::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+    ->where('hora', $horaAtual)->first();
+    $fortuneOx = FortuneOx::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+    ->where('hora', $horaAtual)->first();
+    $fortuneTiger = FortuneTiger::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+    ->where('hora', $horaAtual)->first();
+    $hallow = MrHallowWin::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+    ->where('hora', $horaAtual)->first();
+    // dd($ninja->horarios);
+
+    return Inertia::render('Games', [
+        'ninja' => json_decode($ninja->horarios, true),
+        'fortuneOx' => json_decode($fortuneOx->horarios, true),
+        'hallow' => json_decode($hallow->horarios, true),
+        'tiger' => json_decode($fortuneTiger->horarios, true),
+    ]);
+
 })->middleware(['auth', 'verified'])->name('games');
 
 Route::get('/admin/users', function () {

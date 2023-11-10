@@ -27,9 +27,50 @@ function isIpad() {
 	}
 }
 
-function randomIntFromInterval(min, max) { // min and max included 
-	return Math.floor(Math.random() * (max - min + 1) + min)
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
 }
+
+const { ninja, hallow, fortuneOx, tiger } = defineProps(['ninja', 'hallow', 'fortuneOx', 'tiger']);
+// defineProps({ ninja: Array, hallow: Array, ox: Array, tiger: Array });
+
+const now = new Date();
+
+var pagarTiger = false;1
+var pagarHallow = false;
+var pagarOx = false;
+var pagarNinja = false;
+
+var horaAtual = `${padTo2Digits(now.getHours())}:${padTo2Digits(now.getMinutes())}`;
+tiger.forEach(hora => {
+	if(horaAtual === hora) {
+		pagarTiger = true;
+	}
+});
+
+hallow.forEach(hora => {
+	if(horaAtual === hora) {
+		pagarHallow = true;
+	}
+});
+
+fortuneOx.forEach(hora => {
+	if(horaAtual === hora) {
+		pagarOx = true;
+	}
+});
+
+ninja.forEach(hora => {
+	if(horaAtual === hora) {
+		pagarNinja = true;
+	}
+});
+
+console.log(pagarTiger, 'pagarTiger');
+console.log(pagarHallow, 'pagarHallow');
+console.log(pagarOx, 'pagarOx');
+console.log(pagarNinja, 'pagarNinja');
+console.log(ninja, hallow, fortuneOx, tiger, 'pagar')
 
 function shuffleArray(arr) {
 	// Loop em todos os elementos
@@ -113,25 +154,25 @@ var mostrarHorarioState = false;
 					<Link :href="route('fortune-tiger')">
 					<img class="" :src="FortuneTiger" alt="Fortune Tiger">
 					</Link>
-					<img v-if="pagando == 'tiger'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
+					<img v-if="pagarTiger" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
 				<div class="px-2 jogos relative">
 					<Link :href="route('fortune-ox')">
 					<img class="px-2 jogos" :src="FortuneOx" alt="Fortune Tiger">
 					</Link>
-					<img v-if="pagando == 'ox'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
+					<img v-if="pagarOx" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
 				<div class="px-2 jogos relative">
 					<Link :href="route('hallow-win')">
 					<img class="px-2 jogos" :src="HallowWin" alt="Fortune Tiger">
 					</Link>
-					<img v-if="pagando == 'hallow'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
+					<img v-if="pagarHallow" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
 				<div class="px-2 jogos relative">
 					<Link :href="route('ninja-crash')">
 					<img class="px-2 jogos" :src="Ninja" alt="Ninja Crash">
 					</Link>
-					<img v-if="pagando == 'ninja'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Ninja Crash">
+					<img v-if="pagarNinja" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Ninja Crash">
 				</div>
 			</div>
 			<!--            MOBILE            -->
