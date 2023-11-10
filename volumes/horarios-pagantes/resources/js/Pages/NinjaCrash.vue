@@ -49,7 +49,6 @@ function getLocalNumbers(horarios) {
   if (multipliers?.length === 20 && lastHour && parseInt(lastHour.slice(0, 2)) >= (new Date()).getHours()) {
     return multipliers;
   }
-  console.log(multipliers.length, 'aqui - 22');
 
   let multipliersArray = [];
 
