@@ -46,7 +46,7 @@ class FortuneTigerController extends Controller
 		$horariosReturn = \array_merge(\json_decode($horarios->horarios), \json_decode($proximoHorario->horarios));
 		\sort($horariosReturn);
 		return Inertia::render('FortuneTiger', [
-			'horarios' => \json_decode($horarios->horarios),
+			'horarios' => $horariosReturn,
 			'porcentagem' => $horarios->porcentagem,
 		]);
 	}

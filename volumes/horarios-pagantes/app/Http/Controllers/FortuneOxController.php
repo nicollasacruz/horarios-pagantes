@@ -25,6 +25,7 @@ class FortuneOxController extends Controller
 			->where('hora', $horaAtual)->first();
 		$proximoHorario = FortuneOx::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
 			->where('hora', (date_add($hora, $interval))->format('H'))->first();
+		
 		if (!$horarios) {
 			$i = 0;
 			while ($i != 24) {
@@ -46,7 +47,7 @@ class FortuneOxController extends Controller
 		$horariosReturn = \array_merge(\json_decode($horarios->horarios), \json_decode($proximoHorario->horarios));
 		\sort($horariosReturn);
 		return Inertia::render('FortuneOx', [
-			'horarios' => \json_decode($horarios->horarios),
+			'horarios' => $horariosReturn,
 			'porcentagem' => $horarios->porcentagem,
 		]);
 	}
