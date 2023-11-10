@@ -6,6 +6,7 @@ import horariosPagantes from '../../../storage/app/public/img/horarios-pagantes.
 import FortuneTiger from '../../../storage/app/public/img/tiger.png';
 import FortuneOx from '../../../storage/app/public/img/OX.png';
 import HallowWin from '../../../storage/app/public/img/MrHallowin.png';
+import Ninja from '../../../storage/app/public/img/ninja.png';
 import PagandoAgora from '../../../storage/app/public/img/pagando-agora.png';
 
 function isMobile() {
@@ -126,12 +127,12 @@ var mostrarHorarioState = false;
 					</Link>
 					<img v-if="pagando == 'hallow'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
-				<!-- <div class="px-2 jogos relative">
+				<div class="px-2 jogos relative">
 					<Link :href="route('ninja-crash')">
-					<img class="px-2 jogos" :src="HallowWin" alt="Ninja Crash">
+					<img class="px-2 jogos" :src="Ninja" alt="Ninja Crash">
 					</Link>
 					<img v-if="pagando == 'ninja'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Ninja Crash">
-				</div> -->
+				</div>
 			</div>
 			<!--            MOBILE            -->
 			<div v-if="mobile || ipad" class="boxMobile max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -153,12 +154,12 @@ var mostrarHorarioState = false;
 					</Link>
 					<img v-if="pagando == 'hallow'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Fortune Tiger">
 				</div>
-				<!-- <div class="px-2 jogos relative">
+				<div class="px-2 jogos relative">
 					<Link :href="route('ninja-crash')">
-					<img class="px-2 jogos" :src="HallowWin" alt="Ninja Crash">
+					<img class="px-2 jogos" :src="Ninja" alt="Ninja Crash">
 					</Link>
 					<img v-if="pagando == 'ninja'" class="absolute top-5 start-0 h-20" :src="PagandoAgora" alt="Ninja Crash">
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</AuthenticatedLayout>

@@ -4,6 +4,7 @@ import BgFortuneHallow from '../../../storage/app/public/img/bg-fortune-ninja.pn
 import BgFortuneHallowMobile from '../../../storage/app/public/img/bg-fortune-ninja-mobile.png';
 import BoxFortuneHallow from '../../../storage/app/public/img/box-horarios-ninja.png';
 import BoxFortuneHallowMobile from '../../../storage/app/public/img/box-horarios-ninja-mobile.png';
+import NinjaLogo from '../../../storage/app/public/img/ninja-milionario.png';
 import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -226,7 +227,9 @@ Fortune OX: #AB161B */
   <AuthenticatedLayout>
     <div :class="mobile ? 'containerMobile' : ipad ? 'containerIpad' : 'container'"
       :style="mobile || ipad ? fundoMobile : fundo">
-      <div :class="mobile ? 'sub-div1Mobile' : ipad ? 'sub-div1Ipad' : 'sub-div1'"></div>
+      <div :class="mobile ? 'sub-div1Mobile mx-auto' : ipad ? 'sub-div1Ipad mx-auto' : 'sub-div1 mx-auto'">
+        <img class="mt-20 max-w-[60vw]" :src="NinjaLogo" alt="">
+      </div>
       <!--                PC                 -->
       <div v-if="pc" class="sub-div2 flex flex-col" :style="box">
         <div v-if="carregando" class="text-center my-auto">
@@ -342,11 +345,11 @@ Fortune OX: #AB161B */
 
     <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad && mostrarHorarioState" class="iframe"
-        src="https://betfly7.com/casino/pgsoft/35" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/galaxys/12184" frameborder="0"></iframe>
       <iframe v-if="ipad && mostrarHorarioState" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/35" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/galaxys/12184" frameborder="0"></iframe>
       <iframe v-if="mobile && mostrarHorarioState" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/35" frameborder="0"></iframe>
+        src="https://betfly7.com/casino/galaxys/12184" frameborder="0"></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
           <path fill-rule="evenodd"
