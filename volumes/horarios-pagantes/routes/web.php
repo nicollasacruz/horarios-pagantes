@@ -33,26 +33,7 @@ Route::get('/', function () {
 });
 
 Route::get('/games', function () {
-    $horaAtual = (new DateTime('now', new DateTimeZone('America/Sao_Paulo')))->format('H');
-
-    $ninja = NinjaCrash::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
-    ->where('hora', $horaAtual)->first();
-    dd($ninja, $horaAtual);
-    $fortuneOx = FortuneOx::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
-    ->where('hora', $horaAtual)->first();
-    $fortuneTiger = FortuneTiger::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
-    ->where('hora', $horaAtual)->first();
-    $hallow = MrHallowWin::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
-    ->where('hora', $horaAtual)->first();
-    // dd($ninja->horarios);
-
-    return Inertia::render('Games', [
-        'ninja' => json_decode($ninja?->horarios, true),
-        'fortuneOx' => json_decode($fortuneOx?->horarios, true),
-        'hallow' => json_decode($hallow?->horarios, true),
-        'tiger' => json_decode($fortuneTiger?->horarios, true),
-    ]);
-
+    
 })->middleware(['auth', 'verified'])->name('games');
 
 Route::get('/admin/users', function () {
