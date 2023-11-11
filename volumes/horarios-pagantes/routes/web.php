@@ -10,6 +10,7 @@ use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\NinjaCrashController;
 use App\Models\FortuneOx;
 use App\Models\FortuneTiger;
@@ -32,9 +33,7 @@ Route::get('/', function () {
     return redirect('games');
 });
 
-Route::get('/games', function () {
-    
-})->middleware(['auth', 'verified'])->name('games');
+Route::get('/games', [GamesController::class, 'index'])->middleware(['auth', 'verified'])->name('games');
 
 Route::get('/admin/users', function () {
     if (Auth::user()->role === 'admin') {
