@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\FortuneOx;
+use App\Models\FortuneTiger;
+use App\Models\MrHallowWin;
 use App\Models\NinjaCrash;
 use DateTime;
 use DateTimeZone;
