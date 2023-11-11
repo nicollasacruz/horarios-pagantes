@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FortuneOx;
+use App\Models\NinjaCrash;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Inertia\Response;
 
@@ -36,7 +40,7 @@ class GamesController extends Controller
             while ($i != 24) {
                 $porcentagem = \rand(92, 99) . '.' . \rand(0, 99);
                 $horariosJson = \json_encode($this->generateHorarios($fortuneOx, $i));
-                NinjaCrash::create([
+                FortuneOx::create([
                     'data' => new DateTime('now', new DateTimeZone('America/Sao_Paulo')),
                     'hora' => (int)$i,
                     'porcentagem' => (float)$porcentagem,
@@ -44,7 +48,7 @@ class GamesController extends Controller
                 ]);
                 $i++;
             }
-            $fortuneOx = NinjaCrash::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+            $fortuneOx = FortuneOx::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
                 ->where('hora', $horaAtual)->first();
         }
         $fortuneTiger = FortuneTiger::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
@@ -54,7 +58,7 @@ class GamesController extends Controller
             while ($i != 24) {
                 $porcentagem = \rand(92, 99) . '.' . \rand(0, 99);
                 $horariosJson = \json_encode($this->generateHorarios($fortuneTiger, $i));
-                NinjaCrash::create([
+                FortuneTiger::create([
                     'data' => new DateTime('now', new DateTimeZone('America/Sao_Paulo')),
                     'hora' => (int)$i,
                     'porcentagem' => (float)$porcentagem,
@@ -62,7 +66,7 @@ class GamesController extends Controller
                 ]);
                 $i++;
             }
-            $fortuneTiger = NinjaCrash::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+            $fortuneTiger = FortuneTiger::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
                 ->where('hora', $horaAtual)->first();
         }
         $hallow = MrHallowWin::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
@@ -72,7 +76,7 @@ class GamesController extends Controller
             while ($i != 24) {
                 $porcentagem = \rand(92, 99) . '.' . \rand(0, 99);
                 $horariosJson = \json_encode($this->generateHorarios($hallow, $i));
-                NinjaCrash::create([
+                MrHallowWin::create([
                     'data' => new DateTime('now', new DateTimeZone('America/Sao_Paulo')),
                     'hora' => (int)$i,
                     'porcentagem' => (float)$porcentagem,
@@ -80,7 +84,7 @@ class GamesController extends Controller
                 ]);
                 $i++;
             }
-            $hallow = NinjaCrash::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
+            $hallow = MrHallowWin::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
                 ->where('hora', $horaAtual)->first();
         }
         // dd($ninja->horarios);
