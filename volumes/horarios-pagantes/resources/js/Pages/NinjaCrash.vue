@@ -5,6 +5,7 @@ import BgFortuneHallowMobile from '../../../storage/app/public/img/bg-fortune-ni
 import BoxFortuneHallow from '../../../storage/app/public/img/box-horarios-ninja.png';
 import BoxFortuneHallowMobile from '../../../storage/app/public/img/box-horarios-ninja-mobile.png';
 import NinjaLogo from '../../../storage/app/public/img/ninja-milionario.png';
+import NinjaBoneco from '../../../storage/app/public/img/ninja-boneco.png';
 import { Head, useForm, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -72,7 +73,7 @@ const pc = isPc();
 const fundo = `background-image: url(${BgFortuneHallow})`;
 const fundoMobile = `background-image: url(${BgFortuneHallowMobile})`;
 const box = `background-image: url(${BoxFortuneHallow})`;
-const boxMobile = `background-image: url(${BoxFortuneHallowMobile})`;
+const boxMobile = `background-image: url(${BoxFortuneHallowMobile});`;
 
 const mostrarHorarioState = ref(false);
 const carregando = ref(false);
@@ -262,6 +263,7 @@ Fortune OX: #AB161B */
       :style="mobile || ipad ? fundoMobile : fundo">
       <div :class="mobile ? 'sub-div1Mobile mx-auto' : ipad ? 'sub-div1Ipad mx-auto' : 'sub-div1 mx-auto'">
         <img class="mt-20 max-w-[60vw]" :src="NinjaLogo" alt="">
+        <img class="mt-5 mx-auto max-h-[50vw]" :src="NinjaBoneco" alt="">
       </div>
       <!--                PC                 -->
       <div v-if="pc" class="sub-div2 flex flex-col" :style="box">
