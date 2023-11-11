@@ -37,6 +37,7 @@ Route::get('/games', function () {
 
     $ninja = NinjaCrash::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
     ->where('hora', $horaAtual)->first();
+    dd($ninja, $horaAtual);
     $fortuneOx = FortuneOx::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
     ->where('hora', $horaAtual)->first();
     $fortuneTiger = FortuneTiger::where('data', now(new DateTimeZone('America/Sao_Paulo'))->toDateString())
