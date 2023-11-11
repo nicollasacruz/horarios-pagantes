@@ -9,11 +9,11 @@ use App\Models\NinjaCrash;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
-use Inertia\Response;
+use Inertia\Inertia;
 
 class GamesController extends Controller
 {
-    function index(): Response
+    function index()
     {
         $horaAtual = (new DateTime('now', new DateTimeZone('America/Sao_Paulo')))->format('H');
 
