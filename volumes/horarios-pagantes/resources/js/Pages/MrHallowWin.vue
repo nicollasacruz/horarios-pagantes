@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import BgFortuneHallow from '../../../storage/app/public/img/bg-fortune-hallow.jpg';
-import BgFortuneHallowMobile from '../../../storage/app/public/img/bg-fortune-hallow-mobile.jpg';
+import BgFortuneHallow from '../../../storage/app/public/img/bg-fortune-hallow.png';
+import BgFortuneHallowMobile from '../../../storage/app/public/img/bg-fortune-hallow-mobile.png';
 import BoxFortuneHallow from '../../../storage/app/public/img/box-horarios-hallow.png';
 import BoxFortuneHallowMobile from '../../../storage/app/public/img/box-horarios-hallow-mobile.png';
 import { Head } from '@inertiajs/vue3';
@@ -80,8 +80,8 @@ body {
   width: 100vw;
   height: 127vw;
   background-repeat: no-repeat;
-  background-size: 100vw auto;
-  background-position: start;
+  background-size: auto 100%;
+  background-position: center;
 }
 
 .containerIpad {
@@ -246,7 +246,7 @@ Fortune OX: #AB161B */
           </div>
         </div>
 
-        <div v-if="mostrarHorarioState" style="margin-top: 3%;">
+        <div v-if="mostrarHorarioState" style="margin-top: 6%;">
           <div class="grid grid-cols-4 gap-3 max-w-4xl m-auto">
             <span class="horarios" v-for="(horario, index) in horarios" :key="index">
               {{ horario }}
@@ -342,11 +342,11 @@ Fortune OX: #AB161B */
 
     <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad" class="iframe"
-        src="https://betfly7.com/casino/pgsoft/35" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/35" frameborder="0"></iframe>
       <iframe v-if="ipad" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/35" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/35" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/35" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/35" frameborder="0"></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
           <path fill-rule="evenodd"

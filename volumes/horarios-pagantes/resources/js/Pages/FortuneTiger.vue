@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import BgFortuneTiger from '../../../storage/app/public/img/bg-fortune-tiger.jpg';
-import BgFortuneTigerMobile from '../../../storage/app/public/img/bg-fortune-tiger-mobile.jpg';
+import BgFortuneTiger from '../../../storage/app/public/img/bg-fortune-tiger.png';
+import BgFortuneTigerMobile from '../../../storage/app/public/img/bg-fortune-tiger.png';
 import BoxFortuneTiger from '../../../storage/app/public/img/box-horarios-tiger.png';
 import BoxFortuneTigerMobile from '../../../storage/app/public/img/box-horarios-tiger-mobile.png';
 import { Head } from '@inertiajs/vue3';
@@ -66,10 +66,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 100vw;
+  margin: 0 auto;
+  max-width: 1920px;
   height: 65vw;
   background-repeat: no-repeat;
-  background-size: 100vw auto;
+  background-size: 100% auto;
   background-position: start;
 }
 
@@ -78,10 +79,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 100vw;
-  height: 127vw;
+  height: 178vw;
   background-repeat: no-repeat;
-  background-size: 100vw auto;
-  background-position: start;
+  background-size: auto 100%;
+  background-position: center;
 }
 
 .containerIpad {
@@ -96,7 +97,7 @@ body {
 }
 
 .sub-div2 {
-  width: 100vw;
+  width: 100%;
   height: 45%;
   max-width: 1920px !important;
   background-size: auto 100%;
@@ -108,9 +109,10 @@ body {
 }
 
 .sub-div2Mobile {
-  width: 100vw;
-  height: 45%;
-  background-size: auto 80%;
+  margin: 0 auto;
+  width: 95vw;
+  height: 55%;
+  background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -157,6 +159,7 @@ Fortune OX: #AB161B */
 }
 
 .horarios {
+  max-width: 220px;
   width: 12vw;
   text-align: center;
   font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -173,7 +176,7 @@ Fortune OX: #AB161B */
   text-align: center;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: bold;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   border-radius: 3px;
   box-shadow: 0 3px;
   /* background: rgb(253,184,39); */
@@ -222,12 +225,13 @@ Fortune OX: #AB161B */
   <Head title="Fortune Tiger" />
 
   <AuthenticatedLayout>
+    <div class="bg-black">
     <div :class="mobile ? 'containerMobile' : ipad ? 'containerIpad' : 'container'"
       :style="mobile || ipad ? fundoMobile : fundo">
       <div :class="mobile ? 'sub-div1Mobile' : ipad ? 'sub-div1Ipad' : 'sub-div1'"></div>
 
       <!--                PC                 -->
-      <div v-if="pc" class="sub-div2 flex flex-col" :style="box">
+      <div v-if="pc" class="sub-div2 flex flex-col max-w-[1320px] mx-auto" :style="box">
         <div v-if="!mostrarHorarioState && !carregando"
           class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"><button
             type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
@@ -312,8 +316,7 @@ Fortune OX: #AB161B */
             <span class="font-bold text-sm text-white">Conectando IA ao servidor da plataforma...</span>
           </div>
         </div>
-
-        <div>
+        <div class="mt-3">
           <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-1" style="margin-top: -6%;">
             <span class="horariosMobile" v-for="(horario, index) in horarios" :key="index">
               {{ horario }}
@@ -336,11 +339,11 @@ Fortune OX: #AB161B */
 
     <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad" class="iframe"
-        src="https://betfly7.com/casino/pgsoft/126" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/126" frameborder="0"></iframe>
       <iframe v-if="ipad" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/126" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/126" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/126" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/126" frameborder="0"></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
           <path fill-rule="evenodd"
@@ -349,5 +352,6 @@ Fortune OX: #AB161B */
         </svg>
       </div>
     </div>
+  </div>
   </AuthenticatedLayout>
 </template>

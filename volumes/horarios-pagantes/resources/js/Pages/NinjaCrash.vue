@@ -130,10 +130,11 @@ body {
 }
 
 .sub-div2 {
-  width: 100vw;
-  height: 46%;
+  margin: 0 auto;
+  width: 50%;
+  height: 45%;
   max-width: 1920px !important;
-  background-size: auto 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -145,7 +146,7 @@ body {
   width: 100vw;
   height: 45%;
   margin: 0 auto;
-  background-size: auto 80%;
+  background-size: auto 90%;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -201,12 +202,13 @@ Fortune OX: #AB161B */
   box-shadow: 0 3px;
   /* background: rgb(253,184,39); */
   color: #FFF;
-  background: linear-gradient(360deg, #7731B6 0%, #480E79 100%);
+  background: linear-gradient(360deg, #a4061b 0%, #820516 100%);
 }
 
 .horariosMobile {
-  width: 18vw;
-  height: 3vh;
+  width: 20vw;
+  height: 2.5vh;
+  margin-bottom: 2px;
   text-align: center;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: bold;
@@ -215,7 +217,7 @@ Fortune OX: #AB161B */
   box-shadow: 0 3px;
   /* background: rgb(253,184,39); */
   color: #FFF;
-  background: linear-gradient(360deg, #7731B6 0%, #480E79 100%);
+  background: linear-gradient(360deg, #a4061b 0%, #820516 100%);
 }
 
 .horariosIpad {
@@ -228,7 +230,7 @@ Fortune OX: #AB161B */
   box-shadow: 0 3px;
   /* background: rgb(253,184,39); */
   color: #FFF;
-  background: linear-gradient(360deg, #7731B6 0%, #480E79 100%);
+  background: linear-gradient(360deg, #a4061b 0%, #820516 100%);
 }
 
 .iframe {
@@ -284,7 +286,7 @@ Fortune OX: #AB161B */
           </div>
         </div>
 
-        <div v-if="mostrarHorarioState" style="margin-top: 3%;">
+        <div v-if="mostrarHorarioState" style="margin-top: 7%;">
           <div class="grid grid-cols-4 gap-3 max-w-4xl m-auto">
             <span class="horarios" v-for="(horario, index) in horarios" :key="index">
               {{ horario }} 🗡️ x{{ cortes[index] }} 🥷
@@ -323,7 +325,7 @@ Fortune OX: #AB161B */
         <div>
           <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-3 z-50 max-w-4xl m-auto">
             <span class="horariosIpad" v-for="(horario, index) in horarios" :key="index">
-              {{ horario }} 🗡️ x{{ cortes[index] }}
+              {{ horario }} 🗡️ x{{ cortes[index] }} 🥷
             </span>
           </div>
           <div v-if="mostrarHorarioState"
@@ -360,7 +362,7 @@ Fortune OX: #AB161B */
         <div>
           <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-1 ">
             <span class="horariosMobile" v-for="(horario, index) in horarios" :key="index">
-              {{ horario }} 🗡️ x{{ cortes[index] }}
+              {{ horario }} 🗡️ x{{ cortes[index] }} 🥷
             </span>
           </div>
           <div v-if="mostrarHorarioState"
@@ -379,10 +381,10 @@ Fortune OX: #AB161B */
     </div>
 
     <div class="bg-black relative">
-      <iframe v-if="!mobile && !ipad" class="iframe" src="https://betfly7.com/casino/galaxys/12184"
+      <iframe v-if="!mobile && !ipad" class="iframe" src="https://play7kbet.com/casino/galaxys/12184"
         frameborder="0"></iframe>
-      <iframe v-if="ipad" class="iframeMobile" src="https://betfly7.com/casino/galaxys/12184" frameborder="0"></iframe>
-      <iframe v-if="mobile" class="iframeMobile" src="https://betfly7.com/casino/galaxys/12184" frameborder="0"></iframe>
+      <iframe v-if="ipad" class="iframeMobile" src="https://play7kbet.com/casino/galaxys/12184" frameborder="0"></iframe>
+      <iframe v-if="mobile" class="iframeMobile" src="https://play7kbet.com/casino/galaxys/12184" frameborder="0"></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
           <path fill-rule="evenodd"

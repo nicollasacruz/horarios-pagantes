@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import BgFortuneOx from '../../../storage/app/public/img/bg-fortune-ox.jpg';
-import BgFortuneOxMobile from '../../../storage/app/public/img/bg-fortune-ox-mobile.jpg';
+import BgFortuneOx from '../../../storage/app/public/img/bg-fortune-ox.png';
+import BgFortuneOxMobile from '../../../storage/app/public/img/bg-fortune-ox-mobile.png';
 import BoxFortuneOx from '../../../storage/app/public/img/box-horarios-ox.png';
 import BoxFortuneOxMobile from '../../../storage/app/public/img/box-horarios-ox-mobile.png';
 import { Head } from '@inertiajs/vue3';
@@ -66,10 +66,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 100vw;
+  margin: 0 auto;
+  max-width: 1920px;
   height: 65vw;
   background-repeat: no-repeat;
-  background-size: 100vw auto;
+  background-size: 100% auto;
   background-position: start;
 }
 
@@ -78,10 +79,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 100vw;
-  height: 127vw;
+  height: 178vw;
   background-repeat: no-repeat;
-  background-size: 100vw auto;
-  background-position: start;
+  background-size: auto 100%;
+  background-position: center;
 }
 
 .containerIpad {
@@ -157,7 +158,8 @@ Fortune OX: #AB161B */
 }
 
 .horarios {
-  width: 10vw;
+  max-width: 220px;
+  width: 12vw;
   text-align: center;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: bold;
@@ -248,7 +250,7 @@ Fortune OX: #AB161B */
             <span class="font-bold text-3xl text-white">Conectando IA ao servidor da plataforma...</span>
           </div>
         </div>
-        <div v-if="mostrarHorarioState" style="margin-top: 3%;">
+        <div v-if="mostrarHorarioState" style="margin-top: 6%;">
           <div class="grid grid-cols-4 gap-2 max-w-4xl m-auto">
             <span class="horarios" v-for="(horario, index) in horarios" :key="index">
               {{ horario }}
@@ -334,11 +336,11 @@ Fortune OX: #AB161B */
     </div>
     <div class="bg-black relative">
       <iframe v-if="!mobile && !ipad" class="iframe"
-        src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/98" frameborder="0"></iframe>
       <iframe v-if="ipad" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/98" frameborder="0"></iframe>
       <iframe v-if="mobile" class="iframeMobile"
-        src="https://betfly7.com/casino/pgsoft/98" frameborder="0"></iframe>
+        src="https://play7kbet.com/casino/pgsoft/98" frameborder="0"></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
           <path fill-rule="evenodd"
