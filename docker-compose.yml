@@ -1,8 +1,7 @@
 version: '3.8'
 
 services:
-
-  meu_app:
+  meu_app2:
     build:
       context: ./nginx
       dockerfile: Dockerfile
@@ -11,17 +10,17 @@ services:
       - ./volumes/horarios-pagantes:/var/www/html
     container_name: meu_app
     environment:
-      - VIRTUAL_HOST=multiplicadormilionario.com
-      - LETSENCRYPT_HOST=multiplicadormilionario.com
+      - VIRTUAL_HOST=caixapreta.app
+      - LETSENCRYPT_HOST=caixapreta.app
       - LETSENCRYPT_EMAIL=nicollasacruz@gmail.com
-      - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=8081
     depends_on:
-      - php
+      - php2
     networks:
-      - minha_rede
+      - minha_rede2
       - reverse-proxy
 
-  php:
+  php2:
     build:
       context: ./php
       dockerfile: Dockerfile
@@ -31,9 +30,9 @@ services:
     volumes:
       - ./volumes/horarios-pagantes:/var/www/html
     networks:
-      - minha_rede
+      - minha_rede2
 
-  db:
+  db2:
     image: mariadb
     environment:
       - TZ=${TZ:-CET}
@@ -48,24 +47,16 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - minha_rede
+      - minha_rede2
     
-  mailhog:
-    image: blueimp/mailhog
-    ports:
-      - 8025:8025
-      - 1025:1025
-    networks:
-      - minha_rede
-  
-  redis:
+  redis2:
     image: redis:latest
     restart: unless-stopped
     networks:
-      - minha_rede
+      - minha_rede2
 
 networks :
-  minha_rede:
+  minha_rede2:
     external: true
   reverse-proxy:
     external: true
