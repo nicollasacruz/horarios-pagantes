@@ -18,7 +18,7 @@ const backgroundStyle = `background-image: url(${Background})`;
     >
         <div>
             <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
+                <ApplicationLogo class="w-[200px] h-[200px] fill-current text-gray-500" />
             </Link>
         </div>
 
