@@ -16,6 +16,25 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        screens: {
+            'sm': '400px',
+            // => @media (min-width: 380px) { ... }
+
+            'md': '500px',
+            // => @media (min-width: 500px) { ... }
+
+            'lg': '768px',
+            // => @media (min-width: 768px) { ... }
+
+            'xl': '1024px',
+            // => @media (min-width: 1024px) { ... }
+
+            '2xl': '1280px',
+            // => @media (min-width: 1280px) { ... }
+
+            '3xl': '1920px',
+            // => @media (min-width: 1920px) { ... }
+        }
     },
 
     plugins: [forms],

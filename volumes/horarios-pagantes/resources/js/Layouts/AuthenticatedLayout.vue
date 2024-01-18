@@ -12,7 +12,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="bg-gray-100" style="width: 100%;">
+        <div class="bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,10 +30,10 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('games')" :active="route().current('games')">
-                                    Games
+                                    Dinocash
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('fortune-tiger')" :active="route().current('fortune-tiger')">
                                     Fortune Tiger
                                 </NavLink>
@@ -52,7 +52,7 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('ninja-crash')" :active="route().current('ninja-crash')">
                                     Ninja Crash
                                 </NavLink>
-                            </div>
+                            </div> -->
                             <div v-if="$page.props.auth.user.role === 'admin'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('users-list')" :active="route().current('users-list')">
                                     Admin
@@ -138,9 +138,9 @@ const showingNavigationDropdown = ref(false);
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('games')" :active="route().current('games')">
-                            Games
+                            Dinocash
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('fortune-tiger')" :active="route().current('fortune-tiger')">
+                        <!-- <ResponsiveNavLink :href="route('fortune-tiger')" :active="route().current('fortune-tiger')">
                             Fortune Tiger
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('fortune-ox')" :active="route().current('fortune-ox')">
@@ -151,7 +151,7 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('ninja-crash')" :active="route().current('ninja-crash')">
                             Ninja Crash!
-                        </ResponsiveNavLink>
+                        </ResponsiveNavLink> -->
                         <ResponsiveNavLink v-if="$page.props.auth.user.role === 'admin'" :href="route('users-list')" :active="route().current('users-list')">
                             Admin
                         </ResponsiveNavLink>
@@ -184,7 +184,7 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main class="" style="width: 100vw;">
+            <main>
                 <slot />
             </main>
         </div>

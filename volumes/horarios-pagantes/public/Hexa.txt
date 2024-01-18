@@ -1,0 +1,3 @@
+Cor fundo do horário (box): #19382C
+Cor verde da metragem: #51e403
+Cor dos outros textos branco: #FFFFFF

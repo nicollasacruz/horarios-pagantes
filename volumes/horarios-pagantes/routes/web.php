@@ -33,7 +33,8 @@ Route::get('/', function () {
     return redirect('games');
 });
 
-Route::get('/games', [GamesController::class, 'index'])->middleware(['auth', 'verified'])->name('games');
+// Route::get('/games', [GamesController::class, 'index'])->middleware(['auth', 'verified'])->name('games');
+Route::get('/games', [NinjaCrashController::class, 'index'])->middleware(['auth', 'verified'])->name('games');
 
 Route::get('/admin/users', function () {
     if (Auth::user()->role === 'admin') {
@@ -46,17 +47,17 @@ Route::get('/admin/users', function () {
 Route::get('/admin/users/export', [AdminController::class, 'exportUsers'])
 ->middleware(['auth', 'verified'])->name('users-export');
 
-Route::get('/games/fortune-tiger', [FortuneTigerController::class, 'index'])
-->middleware(['auth', 'verified'])->name('fortune-tiger');
+// Route::get('/games/fortune-tiger', [FortuneTigerController::class, 'index'])
+// ->middleware(['auth', 'verified'])->name('fortune-tiger');
 
-Route::get('/games/fortune-ox', [FortuneOxController::class, 'index'])
-->middleware(['auth', 'verified'])->name('fortune-ox');
+// Route::get('/games/fortune-ox', [FortuneOxController::class, 'index'])
+// ->middleware(['auth', 'verified'])->name('fortune-ox');
 
-Route::get('/games/hallow-win', [MrHallowWinController::class, 'index'])
-->middleware(['auth', 'verified'])->name('hallow-win');
+// Route::get('/games/hallow-win', [MrHallowWinController::class, 'index'])
+// ->middleware(['auth', 'verified'])->name('hallow-win');
 
-Route::get('/games/ninja-crash', [NinjaCrashController::class, 'index'])
-->middleware(['auth', 'verified'])->name('ninja-crash');
+// Route::get('/games/ninja-crash', [NinjaCrashController::class, 'index'])
+// ->middleware(['auth', 'verified'])->name('ninja-crash');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

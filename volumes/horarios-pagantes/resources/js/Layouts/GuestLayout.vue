@@ -7,25 +7,21 @@ const backgroundStyle = `background-image: url(${Background})`;
 </script>
 
 <style>
-    .slot {
-        background-color: #141414;
-    }
+.slot {
+  background-color: #141414;
+}
 </style>
 
 <template>
-    <div class="min-h-screen px-2 flex flex-col sm:justify-center items-center pt-6 sm:pt-0"
-        :style="backgroundStyle"    
-    >
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="w-[200px] h-[200px] fill-current text-gray-500" />
-            </Link>
-        </div>
-
-        <div
-        class="w-full sm:max-w-md mt-6 px-6 py-4 slot shadow-md overflow-hidden sm:rounded-lg"
-        >
-            <slot />
-        </div>
+  <div class="min-h-screen px-2 flex flex-col sm:justify-center items-center pt-6 sm:pt-0" :style="backgroundStyle">
+    <div>
+      <Link href="/">
+      <ApplicationLogo class="w-[200px] h-[200px] fill-current text-gray-500" />
+      </Link>
     </div>
+
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 slot shadow-md overflow-hidden sm:rounded-lg">
+      <slot />
+    </div>
+  </div>
 </template>

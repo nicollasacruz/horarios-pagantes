@@ -20,7 +20,6 @@ const submit = () => {
             onFinish: () => form.reset('password', 'password_confirmation'),
         });
     }
-    console.log('error');
 };
 
 const isPhoneNumberValid = (phoneNumber) => {

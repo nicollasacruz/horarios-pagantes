@@ -1,15 +1,12 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import BgFortuneHallow from '../../../storage/app/public/img/bg-fortune-ninja.png';
-import BgFortuneHallowMobile from '../../../storage/app/public/img/bg-fortune-ninja-mobile.png';
-import BoxFortuneHallow from '../../../storage/app/public/img/box-horarios-ninja.png';
-import BoxFortuneHallowMobile from '../../../storage/app/public/img/box-horarios-ninja-mobile.png';
-import NinjaLogo from '../../../storage/app/public/img/ninja-milionario.png';
-import NinjaBoneco from '../../../storage/app/public/img/ninja-boneco.png';
-import { Head, useForm, usePage } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import BgDino from "../../../storage/app/public/img/bg-web.jpg";
+import BgDinoMobile from "../../../storage/app/public/img/bg-web.jpg";
+import DinoLogo from "../../../storage/app/public/img/logo.svg";
+import { Head, useForm, usePage } from "@inertiajs/vue3";
+import { ref } from "vue";
 
-const { horarios, porcentagem } = defineProps(['horarios', 'porcentagem']);
+const { horarios, porcentagem } = defineProps(["horarios", "porcentagem"]);
 
 function isMobile() {
   if (screen.width <= 760) {
@@ -35,19 +32,27 @@ function scrollToTop() {
 }
 
 function numeroAleatorio() {
-  let numeroAleatorio = Math.random();
-  let numeroFinal = numeroAleatorio * (7 - 3) + 3;
-  numeroFinal = Math.round(numeroFinal);
+  // Gera um número aleatório entre 13 e 16 (dividindo por 50)
+  let numeroAleatorio = Math.floor(Math.random() * (17 - 13)) + 13;
+
+  // Multiplica o número gerado por 50 para obter um múltiplo de 50
+  let numeroFinal = numeroAleatorio * 50;
 
   return numeroFinal;
 }
 
+// Exemplo de uso
+console.log(numeroAleatorio()); // Saída: Um número aleatório entre 650 e 800, divisível por 50
+
 function getLocalNumbers(horarios) {
-  let lastHour = window.localStorage.getItem('lastHour');
-  let multipliers = JSON.parse(window.localStorage.getItem('multipliers'));
+  let lastHour = window.localStorage.getItem("lastHour");
+  let multipliers = JSON.parse(window.localStorage.getItem("multipliers"));
 
-
-  if (multipliers?.length === 20 && lastHour && parseInt(lastHour.slice(0, 2)) >= (new Date()).getHours()) {
+  if (
+    multipliers?.length === 20 &&
+    lastHour &&
+    parseInt(lastHour.slice(0, 2)) >= new Date().getHours()
+  ) {
     return multipliers;
   }
 
@@ -58,22 +63,19 @@ function getLocalNumbers(horarios) {
     multipliersArray.push(num);
   }
 
-  window.localStorage.setItem('lastHour', horarios[19]);
-  window.localStorage.setItem('multipliers', JSON.stringify(multipliersArray));
-  multipliers = window.localStorage.getItem('multipliers');
+  window.localStorage.setItem("lastHour", horarios[19]);
+  window.localStorage.setItem("multipliers", JSON.stringify(multipliersArray));
+  multipliers = window.localStorage.getItem("multipliers");
 
   return JSON.parse(multipliers);
 }
-
 
 const mobile = isMobile();
 const ipad = isIpad();
 const pc = isPc();
 
-const fundo = `background-image: url(${BgFortuneHallow})`;
-const fundoMobile = `background-image: url(${BgFortuneHallowMobile})`;
-const box = `background-image: url(${BoxFortuneHallow})`;
-const boxMobile = `background-image: url(${BoxFortuneHallowMobile});`;
+const fundo = `background-image: url(${BgDino})`;
+const fundoMobile = `background-image: url(${BgDinoMobile})`;
 
 const mostrarHorarioState = ref(false);
 const carregando = ref(false);
@@ -88,7 +90,7 @@ function mostrarHorario() {
 const cortes = getLocalNumbers(horarios);
 </script>
 <style>
-@import url('https://fonts.cdnfonts.com/css/yanone-kaffeesatz');
+@import url("https://fonts.cdnfonts.com/css/yanone-kaffeesatz");
 
 body {
   margin: 0;
@@ -96,302 +98,145 @@ body {
   background-color: black;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 100vw;
-  height: 50vw;
-  background-repeat: no-repeat;
-  background-size: 100vw auto;
-  background-position: start;
-}
-
-.containerMobile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100vw;
-  height: 178vw;
-  background-repeat: no-repeat;
-  background-size: 100vw auto;
-  background-position: start;
-}
-
-.containerIpad {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100vw;
-  height: 178vw;
-  background-repeat: no-repeat;
-  background-size: 100vw auto;
-  background-position: start;
-}
-
-.sub-div2 {
-  margin: 0 auto;
-  width: 50%;
-  height: 45%;
-  max-width: 1920px !important;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sub-div2Mobile {
-  width: 100vw;
-  height: 45%;
-  margin: 0 auto;
-  background-size: auto 90%;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sub-div2Ipad {
-  width: 100vw;
-  height: 45%;
-  margin: 0 auto;
-  background-size: auto 80%;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Mr. Hallo-win: #49227D
-Fortune Tiger: #AB161B
-Fortune OX: #AB161B */
-
 .botaoPc {
   width: 30vw;
   text-align: center;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: "Yanone Kaffeesatz", sans-serif;
   font-weight: bold;
-  color: #49227D;
+  color: #49227d;
   border-radius: 5px;
   box-shadow: 0 3px;
-  background: linear-gradient(180deg, rgba(253, 184, 39, 1) 0%, rgba(253, 226, 103, 1) 100%);
-}
-
-.botao {
-  width: 40vw;
-  text-align: center;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-weight: bold;
-  color: #49227D;
-  border-radius: 5px;
-  box-shadow: 0 3px;
-  background: linear-gradient(180deg, rgba(253, 184, 39, 1) 0%, rgba(253, 226, 103, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(253, 184, 39, 1) 0%,
+    rgba(253, 226, 103, 1) 100%
+  );
 }
 
 .horarios {
   width: 10vw;
   text-align: center;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: "Yanone Kaffeesatz", sans-serif;
   font-weight: bold;
   font-size: 1.7rem;
   border-radius: 5px;
   box-shadow: 0 3px;
   /* background: rgb(253,184,39); */
-  color: #FFF;
-  background: linear-gradient(360deg, #a4061b 0%, #820516 100%);
-}
-
-.horariosMobile {
-  width: 20vw;
-  height: 2.5vh;
-  margin-bottom: 2px;
-  text-align: center;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-weight: bold;
-  font-size: 0.8rem;
-  border-radius: 3px;
-  box-shadow: 0 3px;
-  /* background: rgb(253,184,39); */
-  color: #FFF;
-  background: linear-gradient(360deg, #a4061b 0%, #820516 100%);
-}
-
-.horariosIpad {
-  width: 18vw;
-  text-align: center;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-weight: bold;
-  font-size: 1.3rem;
-  border-radius: 3px;
-  box-shadow: 0 3px;
-  /* background: rgb(253,184,39); */
-  color: #FFF;
+  color: #fff;
   background: linear-gradient(360deg, #a4061b 0%, #820516 100%);
 }
 
 .iframe {
   margin: 0px auto;
   width: 95vw;
-  min-height: 100vh;
-  /* background: rgb(253,184,39); */
-}
-
-.iframeMobile {
-  margin: 0px auto;
-  width: 92vw;
-  min-height: 90vh;
-  max-height: 100vh;
-  /* background: rgb(253,184,39); */
-}
-
-.iframeIpad {
-  margin: 0px auto;
-  width: 92vw;
-  min-height: 90vh;
-  max-height: 100vh;
+  min-height: 100dvh;
   /* background: rgb(253,184,39); */
 }
 </style>
 
 <template>
-  <Head title="Ninja Crash" />
+  <Head title="DinoCash" />
 
   <AuthenticatedLayout>
-    <div :class="mobile ? 'containerMobile' : ipad ? 'containerIpad' : 'container'"
-      :style="mobile || ipad ? fundoMobile : fundo">
-      <div :class="mobile ? 'sub-div1Mobile mx-auto' : ipad ? 'sub-div1Ipad mx-auto' : 'sub-div1 mx-auto'">
-        <img class="mt-20 max-w-[60vw]" :src="NinjaLogo" alt="">
-        <img v-if="mobile || ipad" class="mt-5 mx-auto max-h-[50vw]" :src="NinjaBoneco" alt="">
-      </div>
-      <!--                PC                 -->
-      <div v-if="pc" class="sub-div2 flex flex-col" :style="box">
-        <div v-if="carregando" class="text-center my-auto">
-          <div role="status" class="flex flex-col justify-center justify-items-center items-center">
-            <svg aria-hidden="true"
+    <div
+      class="h-[100dvh] w-[100%] lg:max-w-[100%] flex"
+      :style="{
+        backgroundImage: `url('${mobile || ipad ? BgDinoMobile : BgDino}')`,
+        backgroundSize: mobile || ipad ? 'auto 100%' : '100% auto',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }"
+    >
+      <div class="flex flex-col items-center justify-center mx-auto">
+        <img class="w-[55vw] xl:w-[20vw] mb-[-25px] z-10" :src="DinoLogo" alt="logo dino" />
+
+        <div
+          class="flex justify-center items-center w-[95vw] md:w-[85vw] xl:w-[50vw] py-6 border-2 border-[#34b382] rounded-lg bg-gradient-to-tr from-[#3ca87f] to-[#2a8864]"
+        >
+          <div>
+            <div class="grid grid-cols-4 gap-2 max-w-4xl m-auto">
+              <span
+                class="font-bold text-[11px] md:text-xl xl:text-2xl p-1 sm:px-2 md:px-4 xl:p-3  bg-[#19382C] rounded-md border-2 border-[#3ca87f]"
+                v-for="(horario, index) in horarios"
+                :key="index"
+              >
+                <span class="text-white"> {{ horario }} | </span>
+                <span class="text-[#51e403]"> {{ cortes[index] }}M </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-[100%] mt-2 h-6 bg-gray-200 rounded-full dark:bg-gray-700 border-2 border-black"
+        >
+          <div
+            class="p-1 border-2 border-[#34b382] rounded-sm bg-gradient-to-tr from-[#3ca87f] to-[#2a8864] text-white text-center font-bold md:text-2xl xl:text-2xl"
+          >
+            HORÁRIOS E METRAGEM PAGANTES
+          </div>
+        </div>
+        <!-- <div v-if="carregando" class="text-center my-auto">
+          <div
+            role="status"
+            class="flex flex-col justify-center justify-items-center items-center"
+          >
+            <svg
+              aria-hidden="true"
               class="inline w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
-              viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                fill="currentColor" />
+                fill="currentColor"
+              />
               <path
                 d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                fill="currentFill" />
+                fill="currentFill"
+              />
             </svg>
             <span class="sr-only">Loading...</span>
-            <span class="font-bold text-3xl text-white">Conectando IA ao servidor da plataforma...</span>
+            <span class="font-bold text-3xl text-white"
+              >Conectando IA ao servidor da plataforma...</span
+            >
           </div>
         </div>
 
-        <div v-if="mostrarHorarioState" style="margin-top: 7%;">
-          <div class="grid grid-cols-4 gap-3 max-w-4xl m-auto">
-            <span class="horarios" v-for="(horario, index) in horarios" :key="index">
-              {{ horario }} 🗡️ x{{ cortes[index] }} 🥷
-            </span>
-          </div>
-          <div class="w-[100%] mt-2 h-6 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
-            <div class="h-6 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold "
-              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
-          </div>
-        </div>
+        
 
-        <div v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"><button
-            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
-        </div>
-      </div>
-      <!--               IPAD                -->
-      <div v-if="ipad" class="sub-div2Ipad flex flex-col" :style="boxMobile">
-        <div v-if="carregando" class="text-center my-auto">
-          <div role="status" class="flex flex-col justify-center justify-items-center items-center">
-            <svg aria-hidden="true"
-              class="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
-              viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                fill="currentColor" />
-              <path
-                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                fill="currentFill" />
-            </svg>
-            <span class="sr-only">Loading...</span>
-            <span class="font-bold text-xl text-white">Conectando IA ao servidor da plataforma...</span>
-          </div>
-        </div>
-
-        <div>
-          <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-3 z-50 max-w-4xl m-auto">
-            <span class="horariosIpad" v-for="(horario, index) in horarios" :key="index">
-              {{ horario }} 🗡️ x{{ cortes[index] }} 🥷
-            </span>
-          </div>
-          <div v-if="mostrarHorarioState"
-            class="w-[100%] mt-2 h-5 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
-            <div class="h-5 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold"
-              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
-          </div>
-        </div>
-
-        <div v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botao text-3xl"><button
-            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
-        </div>
-      </div>
-      <!--              MOBILE               -->
-      <div v-if="mobile" class="sub-div2Mobile flex flex-col" :style="boxMobile">
-        <div v-if="carregando" class="text-center my-auto">
-          <div role="status" class="flex flex-col justify-center justify-items-center items-center">
-            <svg aria-hidden="true"
-              class="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
-              viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                fill="currentColor" />
-              <path
-                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                fill="currentFill" />
-            </svg>
-            <span class="sr-only">Loading...</span>
-            <span class="font-bold text-sm text-white">Conectando IA ao servidor da plataforma...</span>
-          </div>
-        </div>
-
-        <div>
-          <div v-if="mostrarHorarioState" class="grid grid-cols-4 gap-1 ">
-            <span class="horariosMobile" v-for="(horario, index) in horarios" :key="index">
-              {{ horario }} 🗡️ x{{ cortes[index] }} 🥷
-            </span>
-          </div>
-          <div v-if="mostrarHorarioState"
-            class="w-[100%] mt-2 h-4 bg-gray-200 rounded-full dark:bg-gray-700 border border-2 border-black">
-            <div class="h-4 bg-green-600 rounded-full dark:bg-green-500 text-center font-bold text-xs"
-              style="width: {{porcentagem}}%">{{ porcentagem }}% DE ASSERTIVIDADE...</div>
-          </div>
-        </div>
-
-
-        <div v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botao text-xl botao"><button
-            type="button" @click="mostrarHorario">CARREGAR HORÁRIOS</button>
-        </div>
+        <div
+          v-if="!mostrarHorarioState && !carregando"
+          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"
+        >
+          <button type="button" @click="mostrarHorario">
+            CARREGAR HORÁRIOS
+          </button>
+        </div> -->
       </div>
     </div>
 
-    <div class="bg-black relative">
-      <iframe v-if="!mobile && !ipad" class="iframe" src="https://play7kbet.com/casino/galaxys/12184"
-        frameborder="0"></iframe>
-      <iframe v-if="ipad" class="iframeMobile" src="https://play7kbet.com/casino/galaxys/12184" frameborder="0"></iframe>
-      <iframe v-if="mobile" class="iframeMobile" src="https://play7kbet.com/casino/galaxys/12184" frameborder="0"></iframe>
+    <!-- <div class="bg-black relative">
+      <iframe
+        v-if="mobile || ipad"
+        class="h-[100dvh]"
+        src="https://dinocash.io/jogar"
+        frameborder="0"
+      ></iframe>
       <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-14 h-14 fill-white">
-          <path fill-rule="evenodd"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-14 h-14 fill-white"
+        >
+          <path
+            fill-rule="evenodd"
             d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v5.69a.75.75 0 001.5 0v-5.69l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
-            clip-rule="evenodd" />
+            clip-rule="evenodd"
+          />
         </svg>
       </div>
-    </div>
+    </div> -->
   </AuthenticatedLayout>
 </template>
