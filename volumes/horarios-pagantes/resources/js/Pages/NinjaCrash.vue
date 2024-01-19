@@ -148,15 +148,20 @@ body {
       }"
     >
       <div class="flex flex-col items-center justify-center mx-auto">
-        <img class="w-[55vw] xl:w-[20vw] mb-[-25px] z-10" :src="DinoLogo" alt="logo dino" />
+        <img
+          class="w-[55vw] xl:w-[20vw] mb-[-25px] z-10"
+          :src="DinoLogo"
+          alt="logo dino"
+        />
 
         <div
+          v-if="mostrarHorarioState"
           class="flex justify-center items-center w-[95vw] md:w-[85vw] xl:w-[50vw] py-6 border-2 border-[#34b382] rounded-lg bg-gradient-to-tr from-[#3ca87f] to-[#2a8864]"
         >
           <div>
             <div class="grid grid-cols-4 gap-2 max-w-4xl m-auto">
               <span
-                class="font-bold text-[11px] md:text-xl xl:text-2xl p-1 sm:px-2 md:px-4 xl:p-3  bg-[#19382C] rounded-md border-2 border-[#3ca87f]"
+                class="font-bold text-[11px] md:text-xl xl:text-2xl p-1 sm:px-2 md:px-4 xl:p-3 bg-[#19382C] rounded-md border-2 border-[#3ca87f]"
                 v-for="(horario, index) in horarios"
                 :key="index"
               >
@@ -166,16 +171,17 @@ body {
             </div>
           </div>
         </div>
+
         <div
-          class="w-[100%] mt-2 h-6 bg-gray-200 rounded-full dark:bg-gray-700 border-2 border-black"
+          v-if="!mostrarHorarioState && !carregando"
+          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto text-2xl p-2 border-2 border-[#34b382] rounded-md bg-gradient-to-tr from-[#3ca87f] to-[#2a8864] text-white text-center font-bold md:text-2xl xl:text-2xl"
         >
-          <div
-            class="p-1 border-2 border-[#34b382] rounded-sm bg-gradient-to-tr from-[#3ca87f] to-[#2a8864] text-white text-center font-bold md:text-2xl xl:text-2xl"
-          >
-            HORÁRIOS E METRAGEM PAGANTES
-          </div>
+          <button type="button" @click="mostrarHorario">
+            CARREGAR HORÁRIOS
+          </button>
         </div>
-        <!-- <div v-if="carregando" class="text-center my-auto">
+
+        <div v-if="carregando" class="text-center my-auto">
           <div
             role="status"
             class="flex flex-col justify-center justify-items-center items-center"
@@ -197,46 +203,21 @@ body {
               />
             </svg>
             <span class="sr-only">Loading...</span>
-            <span class="font-bold text-3xl text-white"
+            <span class="font-bold text-2xl md:text-3xl text-white"
               >Conectando IA ao servidor da plataforma...</span
             >
           </div>
         </div>
-
-        
-
-        <div
-          v-if="!mostrarHorarioState && !carregando"
-          class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 m-auto botaoPc text-4xl"
+        <div v-if="mostrarHorarioState"
+          class="w-[100%] mt-2 h-6 bg-gray-200 rounded-full dark:bg-gray-700 border-2 border-black"
         >
-          <button type="button" @click="mostrarHorario">
-            CARREGAR HORÁRIOS
-          </button>
-        </div> -->
+          <div
+            class="p-1 border-2 border-[#34b382] rounded-sm bg-gradient-to-tr from-[#3ca87f] to-[#2a8864] text-white text-center font-bold md:text-2xl xl:text-2xl"
+          >
+            HORÁRIOS E METRAGEM PAGANTES
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- <div class="bg-black relative">
-      <iframe
-        v-if="mobile || ipad"
-        class="h-[100dvh]"
-        src="https://dinocash.io/jogar"
-        frameborder="0"
-      ></iframe>
-      <div class="absolute bottom-4 right-4 z-50" @click="scrollToTop()">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="w-14 h-14 fill-white"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v5.69a.75.75 0 001.5 0v-5.69l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </div>
-    </div> -->
   </AuthenticatedLayout>
 </template>
